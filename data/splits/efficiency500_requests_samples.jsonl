@@ -1,0 +1,500 @@
+{"qid": "21755", "image_id": "06836_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main sports facility visible in the image?", "gt": "tennis court"}
+{"qid": "33245", "image_id": "10443_0000.png", "type": "color", "raw_type": "object color", "q": "What color is the basketball court?", "gt": "reddish-brown"}
+{"qid": "30596", "image_id": "09614_0000.png", "type": "position", "raw_type": "object position", "q": "Is there any vehicle present near the airplane?", "gt": "Yes"}
+{"qid": "30767", "image_id": "09672_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main feature in the lower half of the image?", "gt": "ground track field"}
+{"qid": "22892", "image_id": "07186_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many vehicles can be seen in the image?", "gt": "One"}
+{"qid": "29027", "image_id": "09089_0000.png", "type": "scene", "raw_type": "image", "q": "Which service was used to capture this image?", "gt": "GoogleEarth"}
+{"qid": "14693", "image_id": "P2721_0001.png", "type": "quantity", "raw_type": "object quantity", "q": "How many ground track fields are visible in the image?", "gt": "1"}
+{"qid": "6576", "image_id": "P1332_0036.png", "type": "position", "raw_type": "object position", "q": "Where is the ship located relative to the image frame?", "gt": "middle-right"}
+{"qid": "2355", "image_id": "P0654_0006.png", "type": "presence", "raw_type": "object existence", "q": "Are there any structures visible near the parking area?", "gt": "Yes"}
+{"qid": "15115", "image_id": "P2758_0085.png", "type": "position", "raw_type": "object position", "q": "What object is in the bottom left position near the water?", "gt": "small-vehicle"}
+{"qid": "1816", "image_id": "P0518_0005.png", "type": "quantity", "raw_type": "object quantity", "q": "How many swimming pools are there in the image?", "gt": "1"}
+{"qid": "5579", "image_id": "P1230_0078.png", "type": "category", "raw_type": "object category", "q": "Which object is positioned on the left side in the image?", "gt": "Plane"}
+{"qid": "2448", "image_id": "P0673_0005.png", "type": "color", "raw_type": "object color", "q": "What color are the solar panels?", "gt": "blue"}
+{"qid": "6725", "image_id": "P1342_0049.png", "type": "position", "raw_type": "object position", "q": "Does the ground track and field occupy the central area of the image?", "gt": "Yes"}
+{"qid": "21657", "image_id": "06811_0000.png", "type": "color", "raw_type": "object color", "q": "What color is the roof of the building?", "gt": "Gray"}
+{"qid": "22398", "image_id": "07039_0000.png", "type": "presence", "raw_type": "object existence", "q": "Does the baseball field have seats for spectators?", "gt": "Yes"}
+{"qid": "17567", "image_id": "P6661_0002.png", "type": "presence", "raw_type": "object existence", "q": "Is there a ground track field visible in the image?", "gt": "Yes"}
+{"qid": "8230", "image_id": "P1397_0059.png", "type": "quantity", "raw_type": "object quantity", "q": "How many airplanes are visible in the image?", "gt": "5"}
+{"qid": "31317", "image_id": "09841_0000.png", "type": "shape", "raw_type": "object shape", "q": "What shape is the storage tank?", "gt": "Circular"}
+{"qid": "27317", "image_id": "08558_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a vehicle located in the bottom-middle section of the image?", "gt": "Yes"}
+{"qid": "2386", "image_id": "P0660_0002.png", "type": "shape", "raw_type": "object shape", "q": "What is the shape of the tennis courts?", "gt": "rectangular"}
+{"qid": "7864", "image_id": "P1390_0034.png", "type": "presence", "raw_type": "object existence", "q": "Are there any other objects besides planes in the image?", "gt": "Yes"}
+{"qid": "32997", "image_id": "10372_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a ground track field in the image?", "gt": "Yes"}
+{"qid": "33777", "image_id": "10602_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there any distinct structures at the top of the cooling towers?", "gt": "Yes"}
+{"qid": "11155", "image_id": "P1854_0025.png", "type": "presence", "raw_type": "object existence", "q": "Are there any small vehicles in the bottom left of the image?", "gt": "yes"}
+{"qid": "15997", "image_id": "P2802_0096.png", "type": "presence", "raw_type": "object existence", "q": "Is there a vehicle positioned to the left side of the airport infrastructure?", "gt": "Yes"}
+{"qid": "12286", "image_id": "P2197_0013.png", "type": "position", "raw_type": "object position", "q": "Is the baseball diamond positioned towards the top or bottom of the image?", "gt": "top"}
+{"qid": "13223", "image_id": "P2450_0001.png", "type": "presence", "raw_type": "object existence", "q": "Are there houses in the image?", "gt": "Yes"}
+{"qid": "2503", "image_id": "P0683_0018.png", "type": "category", "raw_type": "object category", "q": "What category does the bottom-most vehicle on the image belong to?", "gt": "small-vehicle"}
+{"qid": "34079", "image_id": "10693_0000.png", "type": "reasoning", "raw_type": "reasoning", "q": "Is the area in the development phase?", "gt": "Yes"}
+{"qid": "27425", "image_id": "08590_0000.png", "type": "shape", "raw_type": "object shape", "q": "What is the shape of the storage tank?", "gt": "Circular"}
+{"qid": "18403", "image_id": "P8656_0081.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles can be seen in the image?", "gt": "1"}
+{"qid": "33038", "image_id": "10382_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there greenery visible near the stadium?", "gt": "Yes"}
+{"qid": "34416", "image_id": "10804_0000.png", "type": "shape", "raw_type": "object shape", "q": "Is the top of the tanks flat or domed?", "gt": "flat"}
+{"qid": "23577", "image_id": "07373_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there any vegetation visible in the image?", "gt": "No"}
+{"qid": "3912", "image_id": "P0998_0007.png", "type": "position", "raw_type": "object position", "q": "What is the position of the ship that is stationary?", "gt": "top-left"}
+{"qid": "16777", "image_id": "P5070_0118.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are clearly visible?", "gt": "3"}
+{"qid": "27786", "image_id": "08695_0000.png", "type": "category", "raw_type": "object category", "q": "What structures extend over the highway?", "gt": "overpasses"}
+{"qid": "9388", "image_id": "P1476_0015.png", "type": "quantity", "raw_type": "object quantity", "q": "How many large vehicles are visible in the image?", "gt": "2"}
+{"qid": "17988", "image_id": "P8287_0011.png", "type": "presence", "raw_type": "object existence", "q": "Is there at least one small-vehicle near the top edge?", "gt": "Yes"}
+{"qid": "995", "image_id": "P0228_0002.png", "type": "presence", "raw_type": "object existence", "q": "Are trees visible in the image?", "gt": "Yes"}
+{"qid": "18090", "image_id": "P8287_0090.png", "type": "presence", "raw_type": "object existence", "q": "Is there a vehicle located at the far left side of the image?", "gt": "Yes"}
+{"qid": "3826", "image_id": "P0990_0003.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are visible in the image?", "gt": "4"}
+{"qid": "26278", "image_id": "08205_0000.png", "type": "reasoning", "raw_type": "reasoning", "q": "What pattern is formed by the space around the central building?", "gt": "geometric pattern"}
+{"qid": "35661", "image_id": "11181_0000.png", "type": "category", "raw_type": "object category", "q": "What type of large water vessel is visible in the image?", "gt": "ship"}
+{"qid": "28763", "image_id": "09017_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there trees surrounding the tennis courts?", "gt": "Yes"}
+{"qid": "35923", "image_id": "11260_0000.png", "type": "position", "raw_type": "object position", "q": "What is the main structure visible in the center of the image?", "gt": "Airport"}
+{"qid": "9173", "image_id": "P1471_0068.png", "type": "position", "raw_type": "object position", "q": "Where is the unique large vehicle located in the image?", "gt": "Top-left"}
+{"qid": "3065", "image_id": "P0897_0015.png", "type": "category", "raw_type": "object category", "q": "What is the object classification of the largest docked item?", "gt": "ship"}
+{"qid": "2556", "image_id": "P0725_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a small vehicle present in the image?", "gt": "Yes"}
+{"qid": "9745", "image_id": "P1547_0024.png", "type": "scene", "raw_type": "scene type", "q": "What type of area is depicted in the image?", "gt": "urban"}
+{"qid": "20445", "image_id": "06416_0000.png", "type": "color", "raw_type": "object color", "q": "What color are the areas surrounding the highway?", "gt": "Green"}
+{"qid": "12530", "image_id": "P2271_0042.png", "type": "direction", "raw_type": "object direction", "q": "What is the orientation of the roadway in the image?", "gt": "horizontal"}
+{"qid": "14699", "image_id": "P2721_0003.png", "type": "color", "raw_type": "object color", "q": "What color is the surface of the soccer-ball field?", "gt": "green"}
+{"qid": "788", "image_id": "P0179_0059.png", "type": "presence", "raw_type": "object existence", "q": "Is there a plane located in the top-left corner?", "gt": "Yes"}
+{"qid": "18040", "image_id": "P8287_0076.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are visible?", "gt": "7"}
+{"qid": "33105", "image_id": "10403_0000.png", "type": "color", "raw_type": "object color", "q": "What color is the overpass?", "gt": "Gray"}
+{"qid": "20541", "image_id": "06453_0000.png", "type": "color", "raw_type": "object color", "q": "What color are the tennis courts?", "gt": "Grey"}
+{"qid": "17626", "image_id": "P6687_0051.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are visible in the image?", "gt": "5"}
+{"qid": "14175", "image_id": "P2645_0007.png", "type": "quantity", "raw_type": "object quantity", "q": "How many ships are visible in the image?", "gt": "1"}
+{"qid": "3395", "image_id": "P0949_0009.png", "type": "position", "raw_type": "object position", "q": "Is the harbor located near the edge of the image?", "gt": "Yes"}
+{"qid": "20909", "image_id": "06567_0000.png", "type": "scene", "raw_type": "scene type", "q": "What type of area surrounds the ground track field?", "gt": "Urban"}
+{"qid": "3546", "image_id": "P0961_0034.png", "type": "color", "raw_type": "object color", "q": "What color are the rooftops of most visible buildings?", "gt": "Grey"}
+{"qid": "27449", "image_id": "08596_0000.png", "type": "scene", "raw_type": "scene type", "q": "Is the landscape predominantly urban or natural?", "gt": "Natural"}
+{"qid": "15", "image_id": "P0007_0005.png", "type": "presence", "raw_type": "object existence", "q": "Is there a small vehicle present?", "gt": "Yes"}
+{"qid": "75", "image_id": "P0019_0020.png", "type": "position", "raw_type": "object position", "q": "Where is the largest harbor located within the image?", "gt": "bottom-right"}
+{"qid": "23711", "image_id": "07412_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a vehicle present near the ship?", "gt": "Yes"}
+{"qid": "26875", "image_id": "08400_0000.png", "type": "scene", "raw_type": "scene type", "q": "What is the main structure in the image?", "gt": "highway"}
+{"qid": "20576", "image_id": "06462_0000.png", "type": "scene", "raw_type": "scene type", "q": "What is the type of area shown in the image?", "gt": "Urban"}
+{"qid": "4874", "image_id": "P1101_0002.png", "type": "quantity", "raw_type": "object quantity", "q": "How many tennis courts are visible in the image?", "gt": "3"}
+{"qid": "17481", "image_id": "P5789_2882.png", "type": "position", "raw_type": "object position", "q": "What is the orientation of the baseball diamond?", "gt": "top-middle"}
+{"qid": "6033", "image_id": "P1269_0015.png", "type": "scene", "raw_type": "image", "q": "Is the image taken using grayscale or color photography?", "gt": "Grayscale"}
+{"qid": "9031", "image_id": "P1471_0007.png", "type": "scene", "raw_type": "scene type", "q": "What is the overall scene in the image?", "gt": "Parking area"}
+{"qid": "32803", "image_id": "10308_0000.png", "type": "color", "raw_type": "object color", "q": "What is the main color of the rooftops?", "gt": "Grey"}
+{"qid": "1729", "image_id": "P0486_0002.png", "type": "position", "raw_type": "object position", "q": "Are there any small vehicles positioned on the bottom-right?", "gt": "Yes"}
+{"qid": "9694", "image_id": "P1529_0038.png", "type": "quantity", "raw_type": "object quantity", "q": "How many planes are visible?", "gt": "1"}
+{"qid": "34615", "image_id": "10858_0000.png", "type": "shape", "raw_type": "object shape", "q": "What shape does the body of water resemble?", "gt": "Teardrop"}
+{"qid": "28832", "image_id": "09039_0000.png", "type": "position", "raw_type": "object position", "q": "Is the basketball court located on the left or right side of the image?", "gt": "right"}
+{"qid": "23987", "image_id": "07488_0000.png", "type": "category", "raw_type": "object category", "q": "What man-made structure is visible in the image?", "gt": "overpass"}
+{"qid": "15030", "image_id": "P2745_0018.png", "type": "category", "raw_type": "object category", "q": "Which object category does the most numerous objects in the image belong to?", "gt": "storage-tank"}
+{"qid": "16304", "image_id": "P4151_0031.png", "type": "quantity", "raw_type": "object quantity", "q": "How many ships are docked along the edges of the waterway?", "gt": "6"}
+{"qid": "5148", "image_id": "P1154_0006.png", "type": "position", "raw_type": "object position", "q": "Is the helicopter occupying the top half or the bottom half of the image?", "gt": "bottom half"}
+{"qid": "29496", "image_id": "09246_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many windmills are there in the image?", "gt": "3"}
+{"qid": "20920", "image_id": "06571_0000.png", "type": "scene", "raw_type": "scene type", "q": "What type of landscape surrounds the overpass?", "gt": "rural"}
+{"qid": "23634", "image_id": "07392_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there vegetation visible in the image?", "gt": "Yes"}
+{"qid": "34523", "image_id": "10831_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many storage tanks are present in the image?", "gt": "3"}
+{"qid": "2900", "image_id": "P0841_0015.png", "type": "quantity", "raw_type": "object quantity", "q": "How many large vehicles are in the image?", "gt": "1"}
+{"qid": "20715", "image_id": "06507_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there any vehicles visible in the parking lot?", "gt": "No"}
+{"qid": "6764", "image_id": "P1356_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a bridge present in the image?", "gt": "Yes"}
+{"qid": "28481", "image_id": "08925_0000.png", "type": "color", "raw_type": "object color", "q": "What is the color of the boundary lines of the tennis courts?", "gt": "white"}
+{"qid": "29914", "image_id": "09380_0000.png", "type": "color", "raw_type": "object color", "q": "What is the main color of the terrain in this image?", "gt": "Brown"}
+{"qid": "2349", "image_id": "P0654_0003.png", "type": "presence", "raw_type": "object existence", "q": "Do the trees have leaves?", "gt": "no"}
+{"qid": "6673", "image_id": "P1342_0025.png", "type": "presence", "raw_type": "object existence", "q": "Is there only one ground track and field visible in the image?", "gt": "yes"}
+{"qid": "7311", "image_id": "P1377_0045.png", "type": "color", "raw_type": "object color", "q": "What color are the roofs of the houses?", "gt": "reddish"}
+{"qid": "13245", "image_id": "P2450_0006.png", "type": "scene", "raw_type": "scene type", "q": "What type of area is displayed in the image?", "gt": "suburban"}
+{"qid": "4188", "image_id": "P1021_0001.png", "type": "quantity", "raw_type": "object quantity", "q": "How many harbors are there in total?", "gt": "5"}
+{"qid": "31556", "image_id": "09920_0000.png", "type": "category", "raw_type": "object category", "q": "What type of infrastructure is visible at the lower section of the image?", "gt": "Dam"}
+{"qid": "2270", "image_id": "P0622_0005.png", "type": "quantity", "raw_type": "object quantity", "q": "How many ships are visible in the image?", "gt": "1"}
+{"qid": "18096", "image_id": "P8287_0092.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are visible in the image?", "gt": "6"}
+{"qid": "24867", "image_id": "07766_0000.png", "type": "color", "raw_type": "object color", "q": "Is every tennis court colored the same?", "gt": "Yes"}
+{"qid": "9238", "image_id": "P1471_0089.png", "type": "presence", "raw_type": "object existence", "q": "Are there green areas visible in the image?", "gt": "Yes"}
+{"qid": "12805", "image_id": "P2330_0067.png", "type": "position", "raw_type": "object position", "q": "Where is the ship located in the image?", "gt": "top-left"}
+{"qid": "20432", "image_id": "06414_0000.png", "type": "position", "raw_type": "object position", "q": "Which side of the image is the airport located?", "gt": "Bottom right"}
+{"qid": "3540", "image_id": "P0961_0033.png", "type": "presence", "raw_type": "object existence", "q": "Is there a ship moored at a harbor?", "gt": "Yes"}
+{"qid": "33561", "image_id": "10534_0000.png", "type": "category", "raw_type": "object category", "q": "What is the class of the object near the top-middle of the image?", "gt": "bridge"}
+{"qid": "20672", "image_id": "06492_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many bridges are visible?", "gt": "1"}
+{"qid": "22542", "image_id": "07086_0000.png", "type": "shape", "raw_type": "object shape", "q": "What is the shape of the baseball field?", "gt": "Diamond-shaped"}
+{"qid": "22144", "image_id": "06965_0000.png", "type": "scene", "raw_type": "scene type", "q": "Are residential areas visible in the image?", "gt": "Yes"}
+{"qid": "6565", "image_id": "P1332_0034.png", "type": "category", "raw_type": "object category", "q": "What type of objects is visible in the image?", "gt": "ships"}
+{"qid": "11137", "image_id": "P1854_0016.png", "type": "category", "raw_type": "object category", "q": "What type of vehicle is positioned in the bottom-middle of the image?", "gt": "Large-vehicle"}
+{"qid": "16214", "image_id": "P4055_0002.png", "type": "scene", "raw_type": "scene type", "q": "What type of environment surrounds the airport?", "gt": "desert"}
+{"qid": "34399", "image_id": "10799_0000.png", "type": "presence", "raw_type": "object existence", "q": "Does the airport have buildings adjacent to the runway?", "gt": "yes"}
+{"qid": "26721", "image_id": "08343_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many unique objects have been identified in this image?", "gt": "2"}
+{"qid": "6022", "image_id": "P1269_0007.png", "type": "scene", "raw_type": "image", "q": "What is the color of the image?", "gt": "grayscale"}
+{"qid": "28975", "image_id": "09076_0000.png", "type": "category", "raw_type": "object category", "q": "What natural feature is visible on the opposite side of the vegetation next to the bridge?", "gt": "water"}
+{"qid": "7511", "image_id": "P1384_0021.png", "type": "position", "raw_type": "object position", "q": "Where is the roundabout located?", "gt": "top-middle"}
+{"qid": "27551", "image_id": "08622_0000.png", "type": "position", "raw_type": "object position", "q": "Where is the top-most vehicle located?", "gt": "Center"}
+{"qid": "29348", "image_id": "09189_0000.png", "type": "size", "raw_type": "object size", "q": "Are the tennis courts in the image of the same size?", "gt": "Yes"}
+{"qid": "27410", "image_id": "08585_0000.png", "type": "reasoning", "raw_type": "reasoning", "q": "Is the bridge accommodating both pedestrians and vehicles?", "gt": "Yes"}
+{"qid": "18206", "image_id": "P8287_0137.png", "type": "scene", "raw_type": "scene type", "q": "What is the main structure in the center of the image?", "gt": "Building"}
+{"qid": "22665", "image_id": "07122_0000.png", "type": "category", "raw_type": "object category", "q": "Which object is unique in the image?", "gt": "dam"}
+{"qid": "18604", "image_id": "P8877_0001.png", "type": "scene", "raw_type": "image", "q": "Is the satellite image in color?", "gt": "Yes"}
+{"qid": "9629", "image_id": "P1513_0033.png", "type": "position", "raw_type": "object position", "q": "What is the position of the small vehicle that is top-most?", "gt": "top-right"}
+{"qid": "24353", "image_id": "07599_0000.png", "type": "shape", "raw_type": "object shape", "q": "What shape is the ground track field?", "gt": "oval"}
+{"qid": "18284", "image_id": "P8656_0039.png", "type": "position", "raw_type": "object position", "q": "Which direction is the landscaped park area in relation to the small vehicles?", "gt": "top-left"}
+{"qid": "26575", "image_id": "08292_0000.png", "type": "color", "raw_type": "object color", "q": "What color are the roofs of the majority of the houses?", "gt": "gray"}
+{"qid": "14948", "image_id": "P2733_0019.png", "type": "quantity", "raw_type": "object quantity", "q": "How many ships are located on the bottom-right of the harbor?", "gt": "5"}
+{"qid": "31018", "image_id": "09744_0000.png", "type": "scene", "raw_type": "scene type", "q": "What type of area surrounds the golf course?", "gt": "urban"}
+{"qid": "31193", "image_id": "09801_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a road visible in the image?", "gt": "Yes"}
+{"qid": "20224", "image_id": "06347_0000.png", "type": "presence", "raw_type": "object existence", "q": "Does this image show any buildings?", "gt": "No"}
+{"qid": "16193", "image_id": "P3810_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there any green spaces in the image?", "gt": "yes"}
+{"qid": "33336", "image_id": "10472_0000.png", "type": "position", "raw_type": "object position", "q": "Where is one windmill located relative to the image?", "gt": "top-right"}
+{"qid": "2843", "image_id": "P0833_0004.png", "type": "shape", "raw_type": "object shape", "q": "What shape do the tennis courts exhibit?", "gt": "Rectangular"}
+{"qid": "35905", "image_id": "11255_0000.png", "type": "position", "raw_type": "object position", "q": "Is the service area located in the upper or lower half of the image?", "gt": "Both"}
+{"qid": "16226", "image_id": "P4138_0003.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are visible in the image?", "gt": "1"}
+{"qid": "24604", "image_id": "07688_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a unique ground track field in the image?", "gt": "Yes"}
+{"qid": "10932", "image_id": "P1809_0054.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are clearly visible in the image?", "gt": "two"}
+{"qid": "3227", "image_id": "P0929_0015.png", "type": "position", "raw_type": "object position", "q": "What object is at the top-right position within the image?", "gt": "harbor"}
+{"qid": "4914", "image_id": "P1122_0009.png", "type": "scene", "raw_type": "image", "q": "Is the image provided in color or grayscale?", "gt": "color"}
+{"qid": "19862", "image_id": "06247_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many vehicles are visible in the image?", "gt": "5"}
+{"qid": "28677", "image_id": "08988_0000.png", "type": "category", "raw_type": "object category", "q": "What is the primary structure visible in this aerial image?", "gt": "overpass"}
+{"qid": "7437", "image_id": "P1380_0076.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are visible?", "gt": "2"}
+{"qid": "25288", "image_id": "07902_0000.png", "type": "scene", "raw_type": "scene type", "q": "What type of area surrounds the expressway service area?", "gt": "Rural"}
+{"qid": "7683", "image_id": "P1384_0126.png", "type": "quantity", "raw_type": "object quantity", "q": "How many unique swimming pools are visible in the image?", "gt": "1"}
+{"qid": "34283", "image_id": "10760_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is the visible expressway service area surrounded by vegetation?", "gt": "yes"}
+{"qid": "21976", "image_id": "06911_0000.png", "type": "position", "raw_type": "object position", "q": "Is the vehicle located on or under the overpass?", "gt": "on"}
+{"qid": "36951", "image_id": "11575_0000.png", "type": "reasoning", "raw_type": "reasoning", "q": "Is the outfield of the baseball field covered in grass?", "gt": "Yes"}
+{"qid": "8089", "image_id": "P1397_0001.png", "type": "color", "raw_type": "object color", "q": "What color is the trail on which the plane is located?", "gt": "dusty"}
+{"qid": "32810", "image_id": "10310_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there visible train tracks in the image?", "gt": "Yes"}
+{"qid": "5372", "image_id": "P1179_0124.png", "type": "presence", "raw_type": "object existence", "q": "Are any of the planes in the bottom half of the image?", "gt": "No"}
+{"qid": "26608", "image_id": "08301_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many tennis courts are present in the image?", "gt": "2"}
+{"qid": "26779", "image_id": "08361_0000.png", "type": "shape", "raw_type": "object shape", "q": "What shape is the chimney?", "gt": "circular"}
+{"qid": "11454", "image_id": "P1854_0163.png", "type": "scene", "raw_type": "scene type", "q": "What type of location is depicted in the image?", "gt": "airport"}
+{"qid": "6717", "image_id": "P1342_0047.png", "type": "category", "raw_type": "object category", "q": "What does the bridge connect?", "gt": "fields and roads"}
+{"qid": "5204", "image_id": "P1156_0031.png", "type": "quantity", "raw_type": "object quantity", "q": "How many planes are visible in the image?", "gt": "2"}
+{"qid": "18166", "image_id": "P8287_0122.png", "type": "position", "raw_type": "object position", "q": "Which part of the intersection has the largest vehicle?", "gt": "Bottom-right"}
+{"qid": "14635", "image_id": "P2714_0032.png", "type": "quantity", "raw_type": "object quantity", "q": "How many soccer ball fields are present?", "gt": "1"}
+{"qid": "30750", "image_id": "09667_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many baseball fields are visible in the image?", "gt": "2"}
+{"qid": "11566", "image_id": "P1854_0214.png", "type": "category", "raw_type": "object category", "q": "What type of vehicle is centrally positioned in the image?", "gt": "plane"}
+{"qid": "31174", "image_id": "09796_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there any vegetation visible in the image?", "gt": "No"}
+{"qid": "30949", "image_id": "09725_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a storage tank visible in the image?", "gt": "Yes"}
+{"qid": "6984", "image_id": "P1356_0057.png", "type": "position", "raw_type": "object position", "q": "In which part of the image is the top-most bridge located?", "gt": "top-middle"}
+{"qid": "19941", "image_id": "06267_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many airplanes are visible in the image?", "gt": "1"}
+{"qid": "1702", "image_id": "P0466_0007.png", "type": "reasoning", "raw_type": "reasoning", "q": "Is the right-most tennis court in the image partially covered by a shadow?", "gt": "No"}
+{"qid": "31155", "image_id": "09790_0000.png", "type": "position", "raw_type": "object position", "q": "Where is the bottom-most vehicle located?", "gt": "bottom-left"}
+{"qid": "23366", "image_id": "07314_0000.png", "type": "color", "raw_type": "object color", "q": "What color is the terrain mostly?", "gt": "beige"}
+{"qid": "23925", "image_id": "07469_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there visible storage tanks in the satellite image?", "gt": "Yes"}
+{"qid": "23085", "image_id": "07237_0000.png", "type": "scene", "raw_type": "scene type", "q": "What is the main structure in the image?", "gt": "bridge"}
+{"qid": "26276", "image_id": "08205_0000.png", "type": "category", "raw_type": "object category", "q": "What is the primary object visible in the image?", "gt": "Expressway service area"}
+{"qid": "24686", "image_id": "07712_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main structure in the image?", "gt": "bridge"}
+{"qid": "25004", "image_id": "07811_0000.png", "type": "presence", "raw_type": "object existence", "q": "Does the image show any bodies of water?", "gt": "Yes"}
+{"qid": "16415", "image_id": "P4151_0068.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are visible in the image?", "gt": "3"}
+{"qid": "3177", "image_id": "P0929_0000.png", "type": "reasoning", "raw_type": "reasoning", "q": "Are the ships located within or outside of the harbors?", "gt": "Within"}
+{"qid": "32220", "image_id": "10113_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a swimming pool visible in the image?", "gt": "Yes"}
+{"qid": "34783", "image_id": "10904_0000.png", "type": "scene", "raw_type": "image", "q": "What type of image is this?", "gt": "Color"}
+{"qid": "24808", "image_id": "07748_0000.png", "type": "scene", "raw_type": "scene type", "q": "Is the basketball court enclosed?", "gt": "yes"}
+{"qid": "23627", "image_id": "07390_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main structure spanning over the water?", "gt": "bridges"}
+{"qid": "9411", "image_id": "P1483_0005.png", "type": "color", "raw_type": "object color", "q": "What is the color of the tarmac?", "gt": "grey"}
+{"qid": "21246", "image_id": "06680_0000.png", "type": "reasoning", "raw_type": "reasoning", "q": "Which side of the image is barren ground more prominent?", "gt": "Left"}
+{"qid": "21826", "image_id": "06862_0000.png", "type": "position", "raw_type": "object position", "q": "Which object is closer to the bottom of the image?", "gt": "Smaller vehicle"}
+{"qid": "2944", "image_id": "P0844_0003.png", "type": "shape", "raw_type": "object shape", "q": "What is the shape of the tennis courts?", "gt": "rectangular"}
+{"qid": "12256", "image_id": "P2194_0019.png", "type": "color", "raw_type": "object color", "q": "What color are the lines on the soccer field?", "gt": "White"}
+{"qid": "2822", "image_id": "P0822_0004.png", "type": "scene", "raw_type": "scene type", "q": "What is the main feature in the image captured by GoogleEarth?", "gt": "tennis courts"}
+{"qid": "21590", "image_id": "06784_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a building adjacent to the tennis courts?", "gt": "yes"}
+{"qid": "33398", "image_id": "10488_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a train station visible in the aerial image?", "gt": "Yes"}
+{"qid": "34377", "image_id": "10793_0000.png", "type": "scene", "raw_type": "scene type", "q": "What is the terrain like in the image?", "gt": "arid"}
+{"qid": "20325", "image_id": "06375_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main structure in the image?", "gt": "Train station"}
+{"qid": "8780", "image_id": "P1410_0120.png", "type": "scene", "raw_type": "scene type", "q": "What type of terrain is shown in the image?", "gt": "Semi-arid"}
+{"qid": "19939", "image_id": "06266_0000.png", "type": "scene", "raw_type": "scene type", "q": "Is the area depicted urban or suburban?", "gt": "Suburban"}
+{"qid": "32630", "image_id": "10240_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a visible body of water near the dam?", "gt": "Yes"}
+{"qid": "4945", "image_id": "P1128_0007.png", "type": "category", "raw_type": "object category", "q": "What is the object captured in the image?", "gt": "plane"}
+{"qid": "1011", "image_id": "P0237_0001.png", "type": "color", "raw_type": "object color", "q": "What color is the playing surface of the tennis courts?", "gt": "green"}
+{"qid": "28237", "image_id": "08844_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a vehicle near the baseball field?", "gt": "Yes"}
+{"qid": "31409", "image_id": "09868_0000.png", "type": "category", "raw_type": "object category", "q": "What type of structure is visible in the image?", "gt": "windmill"}
+{"qid": "32452", "image_id": "10175_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many tennis courts can be seen?", "gt": "3"}
+{"qid": "26252", "image_id": "08197_0000.png", "type": "position", "raw_type": "object position", "q": "Which direction does the dam run in the image?", "gt": "Diagonally"}
+{"qid": "16206", "image_id": "P3957_0003.png", "type": "scene", "raw_type": "scene type", "q": "What is the main type of landscape visible in the image?", "gt": "urban"}
+{"qid": "1181", "image_id": "P0331_0007.png", "type": "shape", "raw_type": "object shape", "q": "What is the shape of the swimming pool?", "gt": "Irregular"}
+{"qid": "33232", "image_id": "10438_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there any buildings adjacent to the stadium?", "gt": "Yes"}
+{"qid": "29814", "image_id": "09343_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many windmills are visible in the image?", "gt": "2"}
+{"qid": "11359", "image_id": "P1854_0112.png", "type": "color", "raw_type": "object color", "q": "What color are most of the large vehicles?", "gt": "yellow"}
+{"qid": "35813", "image_id": "11229_0000.png", "type": "size", "raw_type": "object size", "q": "What size is the ship classified as in the object information?", "gt": "small"}
+{"qid": "200", "image_id": "P0019_0089.png", "type": "presence", "raw_type": "object existence", "q": "Is there a ship in the image?", "gt": "Yes"}
+{"qid": "1059", "image_id": "P0257_0004.png", "type": "position", "raw_type": "object position", "q": "Where is the top-most plane located?", "gt": "center"}
+{"qid": "37378", "image_id": "11713_0000.png", "type": "scene", "raw_type": "scene type", "q": "What type of structures are predominantly surrounding the train station?", "gt": "Buildings"}
+{"qid": "15135", "image_id": "P2758_0112.png", "type": "presence", "raw_type": "object existence", "q": "Are there any small vehicles that are uniquely identifiable?", "gt": "No"}
+{"qid": "23951", "image_id": "07479_0000.png", "type": "size", "raw_type": "object size", "q": "What is the main feature of the top-right positioned windmill?", "gt": "largest"}
+{"qid": "11855", "image_id": "P1995_0006.png", "type": "presence", "raw_type": "object existence", "q": "Does the building have multiple air conditioning units on the roof?", "gt": "Yes"}
+{"qid": "4999", "image_id": "P1143_0025.png", "type": "color", "raw_type": "object color", "q": "What color is the plane?", "gt": "beige"}
+{"qid": "9620", "image_id": "P1513_0028.png", "type": "category", "raw_type": "object category", "q": "What are the visible road markings?", "gt": "Lane markings"}
+{"qid": "8115", "image_id": "P1397_0010.png", "type": "quantity", "raw_type": "object quantity", "q": "How many airplanes are visible in the image?", "gt": "4"}
+{"qid": "35494", "image_id": "11125_0000.png", "type": "presence", "raw_type": "object existence", "q": "Does the surrounding area of the golf course include dense vegetation?", "gt": "Yes"}
+{"qid": "22460", "image_id": "07062_0000.png", "type": "position", "raw_type": "object position", "q": "What is located at the bottom of the image?", "gt": "toll station"}
+{"qid": "37120", "image_id": "11631_0000.png", "type": "scene", "raw_type": "scene type", "q": "What is the primary object visible in the satellite image?", "gt": "Chimney"}
+{"qid": "5202", "image_id": "P1156_0030.png", "type": "quantity", "raw_type": "object quantity", "q": "Is there only one plane visible in the image?", "gt": "yes"}
+{"qid": "26216", "image_id": "08187_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many tennis courts are visible in the image?", "gt": "2"}
+{"qid": "36266", "image_id": "11363_0000.png", "type": "shape", "raw_type": "object shape", "q": "What shape is the storage tank's top?", "gt": "Dome-shaped"}
+{"qid": "32279", "image_id": "10131_0000.png", "type": "scene", "raw_type": "scene type", "q": "What is the main structure visible in the image?", "gt": "expressway-toll-station"}
+{"qid": "35493", "image_id": "11125_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there any water bodies visible on the golf course?", "gt": "Yes"}
+{"qid": "22507", "image_id": "07075_0000.png", "type": "position", "raw_type": "object position", "q": "What is the relative position of the top-left vehicle compared to other objects?", "gt": "top-most"}
+{"qid": "8479", "image_id": "P1398_0015.png", "type": "direction", "raw_type": "object direction", "q": "Are the planes positioned horizontally or vertically?", "gt": "horizontally"}
+{"qid": "34632", "image_id": "10863_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many storage tanks are prominently visible in the image?", "gt": "2"}
+{"qid": "9098", "image_id": "P1471_0040.png", "type": "position", "raw_type": "object position", "q": "Where is the small vehicle located in the image?", "gt": "Top-left"}
+{"qid": "3964", "image_id": "P0998_0032.png", "type": "size", "raw_type": "object size", "q": "Which harbor is larger, the left-most or the right-most?", "gt": "right-most"}
+{"qid": "31827", "image_id": "09999_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many large vehicles are parked?", "gt": "2"}
+{"qid": "36686", "image_id": "11498_0000.png", "type": "color", "raw_type": "object color", "q": "What color is the vehicle on the left-most side of the image?", "gt": "Red"}
+{"qid": "17741", "image_id": "P6687_0118.png", "type": "quantity", "raw_type": "object quantity", "q": "How many large vehicles are visible in the image?", "gt": "2"}
+{"qid": "11279", "image_id": "P1854_0081.png", "type": "position", "raw_type": "object position", "q": "Where is the grassy area located in the image?", "gt": "Top-middle"}
+{"qid": "16913", "image_id": "P5337_0028.png", "type": "color", "raw_type": "object color", "q": "What is the color of the ocean in the image?", "gt": "Dark"}
+{"qid": "32478", "image_id": "10184_0000.png", "type": "color", "raw_type": "object color", "q": "What is the predominant color of the fields in the image?", "gt": "Grey"}
+{"qid": "22287", "image_id": "07008_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many expressway-toll-stations are in the image?", "gt": "1"}
+{"qid": "19324", "image_id": "06079_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main feature in the port area?", "gt": "Ship"}
+{"qid": "19120", "image_id": "06012_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many ships are visible in the image?", "gt": "5"}
+{"qid": "22384", "image_id": "07036_0000.png", "type": "color", "raw_type": "object color", "q": "What color are the vehicle trailers?", "gt": "White"}
+{"qid": "6918", "image_id": "P1356_0042.png", "type": "scene", "raw_type": "scene type", "q": "What type of landscape is shown in the image?", "gt": "agricultural"}
+{"qid": "18141", "image_id": "P8287_0111.png", "type": "presence", "raw_type": "object existence", "q": "Is there a pedestrian crossing visible in the image?", "gt": "Yes"}
+{"qid": "15250", "image_id": "P2766_0104.png", "type": "color", "raw_type": "object color", "q": "What color are the large buildings in the image?", "gt": "blue"}
+{"qid": "2771", "image_id": "P0815_0002.png", "type": "presence", "raw_type": "object existence", "q": "Are any structures with solar panels observed in the image?", "gt": "yes"}
+{"qid": "12204", "image_id": "P2181_0013.png", "type": "presence", "raw_type": "object existence", "q": "What man-made structure is visible in the image?", "gt": "storage tank"}
+{"qid": "8877", "image_id": "P1434_0001.png", "type": "position", "raw_type": "object position", "q": "What relative position does the bottom-most large vehicle have?", "gt": "Bottom"}
+{"qid": "24318", "image_id": "07587_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many bridges are visible in the image?", "gt": "2"}
+{"qid": "14973", "image_id": "P2733_0029.png", "type": "presence", "raw_type": "object existence", "q": "Is there a container crane in the bottom-left quadrant of the image?", "gt": "Yes"}
+{"qid": "3413", "image_id": "P0953_0001.png", "type": "size", "raw_type": "object size", "q": "Is the ship near the bottom of the image larger in size than the ship near the top of the image?", "gt": "No"}
+{"qid": "17477", "image_id": "P5789_2881.png", "type": "shape", "raw_type": "object shape", "q": "What shape is the ground-track-field?", "gt": "irregular quadrilateral"}
+{"qid": "5655", "image_id": "P1234_0053.png", "type": "position", "raw_type": "object position", "q": "Which side of the image does the left-most ship appear?", "gt": "Left"}
+{"qid": "6982", "image_id": "P1356_0057.png", "type": "scene", "raw_type": "image", "q": "What color tones are present in the image?", "gt": "grayscale"}
+{"qid": "33560", "image_id": "10533_0000.png", "type": "category", "raw_type": "object category", "q": "Which object is positioned at the top-middle of the image?", "gt": "Basketball court"}
+{"qid": "16535", "image_id": "P4151_0128.png", "type": "category", "raw_type": "object category", "q": "What is the object at the bottom of the image?", "gt": "Small vehicle"}
+{"qid": "14045", "image_id": "P2625_0007.png", "type": "position", "raw_type": "object position", "q": "What position is the large vehicle in relation to the image?", "gt": "Top-left"}
+{"qid": "10976", "image_id": "P1809_0085.png", "type": "quantity", "raw_type": "object quantity", "q": "How many unique small vehicles are identifiable?", "gt": "0"}
+{"qid": "36179", "image_id": "11341_0000.png", "type": "presence", "raw_type": "object existence", "q": "Does one of the tanks have a different roof pattern than the others?", "gt": "Yes"}
+{"qid": "6857", "image_id": "P1356_0026.png", "type": "scene", "raw_type": "scene type", "q": "Does the image show any urban development?", "gt": "No"}
+{"qid": "36171", "image_id": "11337_0000.png", "type": "direction", "raw_type": "object direction", "q": "What is the orientation of the expressway service area?", "gt": "East-West"}
+{"qid": "36521", "image_id": "11447_0000.png", "type": "presence", "raw_type": "object existence", "q": "What is the main object visible in this image?", "gt": "Airplane"}
+{"qid": "360", "image_id": "P0056_0003.png", "type": "quantity", "raw_type": "object quantity", "q": "How many large vehicles are clearly visible?", "gt": "2"}
+{"qid": "36006", "image_id": "11287_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is the storage tank connected to another structure?", "gt": "Yes"}
+{"qid": "13186", "image_id": "P2429_0006.png", "type": "quantity", "raw_type": "object quantity", "q": "How many ships are visible in the image?", "gt": "3"}
+{"qid": "9523", "image_id": "P1508_0027.png", "type": "presence", "raw_type": "object existence", "q": "Are there any people visible near the helicopters?", "gt": "Yes"}
+{"qid": "9230", "image_id": "P1471_0087.png", "type": "position", "raw_type": "object position", "q": "Are the vehicles arranged in a straight or curved formation?", "gt": "straight"}
+{"qid": "4351", "image_id": "P1029_0011.png", "type": "presence", "raw_type": "object existence", "q": "Are trees present in the residential area?", "gt": "Yes"}
+{"qid": "36123", "image_id": "11323_0000.png", "type": "category", "raw_type": "object category", "q": "What object category does the item in the center of the image belong to?", "gt": "Vehicle"}
+{"qid": "34179", "image_id": "10725_0000.png", "type": "presence", "raw_type": "object existence", "q": "Does the image contain any golf courses?", "gt": "Yes"}
+{"qid": "28668", "image_id": "08982_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is the visible object in the image unique?", "gt": "Yes"}
+{"qid": "31303", "image_id": "09837_0000.png", "type": "category", "raw_type": "object category", "q": "What object is visible at the right edge of the image?", "gt": "Ship"}
+{"qid": "14092", "image_id": "P2625_0021.png", "type": "position", "raw_type": "object position", "q": "Are the vehicles more clustered on the left or spaced out towards the bottom?", "gt": "clustered on the left"}
+{"qid": "34649", "image_id": "10868_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many vehicles are visible in the image?", "gt": "1"}
+{"qid": "24712", "image_id": "07717_0000.png", "type": "position", "raw_type": "object position", "q": "Where is the right-most tennis court located with reference to the image?", "gt": "middlep-right"}
+{"qid": "5280", "image_id": "P1178_0069.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are identifiable?", "gt": "8"}
+{"qid": "598", "image_id": "P0170_0001.png", "type": "position", "raw_type": "object position", "q": "Where is the large vehicle located?", "gt": "middle-right"}
+{"qid": "30437", "image_id": "09559_0000.png", "type": "position", "raw_type": "object position", "q": "Is the vehicle located on the overpass?", "gt": "Yes"}
+{"qid": "3145", "image_id": "P0910_0008.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are visible in this image?", "gt": "6"}
+{"qid": "37192", "image_id": "11652_0000.png", "type": "scene", "raw_type": "scene type", "q": "Does the airport extend to the edges of the image?", "gt": "Yes"}
+{"qid": "21576", "image_id": "06781_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many lanes can be seen in the image?", "gt": "Multiple"}
+{"qid": "1872", "image_id": "P0525_0004.png", "type": "position", "raw_type": "object position", "q": "Do the docks of both harbors extend into the water?", "gt": "Yes"}
+{"qid": "33026", "image_id": "10380_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many windmills are present in the image?", "gt": "3"}
+{"qid": "27000", "image_id": "08452_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there any airplanes visible in the image?", "gt": "Yes"}
+{"qid": "34719", "image_id": "10887_0000.png", "type": "category", "raw_type": "object category", "q": "What type of road runs along the bottom edge of the image?", "gt": "expressway"}
+{"qid": "19590", "image_id": "06157_0000.png", "type": "category", "raw_type": "object category", "q": "What object is shown on the left edge of the image?", "gt": "tenniscourt"}
+{"qid": "20268", "image_id": "06360_0000.png", "type": "position", "raw_type": "object position", "q": "Are the windmills positioned on the left or right side of the image?", "gt": "Left"}
+{"qid": "29497", "image_id": "09246_0000.png", "type": "scene", "raw_type": "scene type", "q": "What is the main usage of land in this area?", "gt": "agriculture"}
+{"qid": "17332", "image_id": "P5789_2397.png", "type": "scene", "raw_type": "image", "q": "What color is the image?", "gt": "grayscale"}
+{"qid": "7556", "image_id": "P1384_0036.png", "type": "category", "raw_type": "object category", "q": "What is the main recreational feature in the image?", "gt": "soccer-ball-field"}
+{"qid": "35499", "image_id": "11126_0000.png", "type": "presence", "raw_type": "object existence", "q": "Can any buildings be seen in the image?", "gt": "No"}
+{"qid": "12733", "image_id": "P2330_0038.png", "type": "quantity", "raw_type": "object quantity", "q": "How many ships can be seen in the image?", "gt": "2"}
+{"qid": "24176", "image_id": "07547_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a ship located in the top right of the image?", "gt": "Yes"}
+{"qid": "33474", "image_id": "10509_0000.png", "type": "presence", "raw_type": "object existence", "q": "Does the image contain any bodies of water?", "gt": "No"}
+{"qid": "6510", "image_id": "P1323_0059.png", "type": "direction", "raw_type": "object direction", "q": "Are the bridges running east-west or north-south?", "gt": "Cannot determine"}
+{"qid": "34793", "image_id": "10907_0000.png", "type": "direction", "raw_type": "object direction", "q": "Does the bridge run from the left to the right side of the image?", "gt": "Yes"}
+{"qid": "7087", "image_id": "P1373_0029.png", "type": "presence", "raw_type": "object existence", "q": "Is there a basketball court in the top-right corner of the image?", "gt": "Yes"}
+{"qid": "11793", "image_id": "P1982_0001.png", "type": "position", "raw_type": "object position", "q": "Are the large vehicles positioned along the edge of the image?", "gt": "Yes"}
+{"qid": "13710", "image_id": "P2582_0009.png", "type": "color", "raw_type": "object color", "q": "What is the color of the soccer ball fields?", "gt": "green"}
+{"qid": "21697", "image_id": "06821_0000.png", "type": "category", "raw_type": "object category", "q": "What is the natural environment to the left of the dam?", "gt": "forest"}
+{"qid": "2196", "image_id": "P0590_0002.png", "type": "color", "raw_type": "object color", "q": "What is the color of the large vehicle's roof?", "gt": "white"}
+{"qid": "16698", "image_id": "P5070_0064.png", "type": "position", "raw_type": "object position", "q": "Where is the visible small vehicle positioned?", "gt": "Bottom-right"}
+{"qid": "16936", "image_id": "P5569_0003.png", "type": "color", "raw_type": "object color", "q": "What color are the waters near the coast?", "gt": "blue"}
+{"qid": "15140", "image_id": "P2766_0009.png", "type": "position", "raw_type": "object position", "q": "Where is the storage tank located within the image?", "gt": "Middle-right"}
+{"qid": "1137", "image_id": "P0309_0005.png", "type": "presence", "raw_type": "object existence", "q": "Is there a ship visible in this image?", "gt": "Yes"}
+{"qid": "8355", "image_id": "P1397_0092.png", "type": "category", "raw_type": "object category", "q": "What is the main object category visible in the image?", "gt": "plane"}
+{"qid": "13010", "image_id": "P2342_0013.png", "type": "scene", "raw_type": "scene type", "q": "What is the primary natural feature visible in the image?", "gt": "River and vegetation"}
+{"qid": "19987", "image_id": "06280_0000.png", "type": "color", "raw_type": "object color", "q": "What color dominates the agricultural fields?", "gt": "Brown"}
+{"qid": "14619", "image_id": "P2714_0024.png", "type": "position", "raw_type": "object position", "q": "Is the ground-track field positioned to the left or right of the soccer-ball field?", "gt": "left"}
+{"qid": "19449", "image_id": "06117_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is the baseball field surrounded by grass?", "gt": "Yes"}
+{"qid": "15212", "image_id": "P2766_0057.png", "type": "scene", "raw_type": "image", "q": "Is the image in color or grayscale?", "gt": "Color"}
+{"qid": "28336", "image_id": "08880_0000.png", "type": "position", "raw_type": "object position", "q": "Is the right-most vehicle located at the top of the image?", "gt": "top-right"}
+{"qid": "4473", "image_id": "P1065_0007.png", "type": "presence", "raw_type": "object existence", "q": "Are there any green areas in the image?", "gt": "Yes"}
+{"qid": "35777", "image_id": "11214_0000.png", "type": "scene", "raw_type": "scene type", "q": "Does the image feature natural or artificial terrain?", "gt": "Both"}
+{"qid": "2250", "image_id": "P0615_0007.png", "type": "position", "raw_type": "object position", "q": "Is the harbor located in the top half of the image?", "gt": "No"}
+{"qid": "7376", "image_id": "P1380_0020.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are visible in the image?", "gt": "2"}
+{"qid": "10921", "image_id": "P1809_0046.png", "type": "category", "raw_type": "object category", "q": "What is the primary category of the large object on the left side of the image?", "gt": "plane"}
+{"qid": "14965", "image_id": "P2733_0028.png", "type": "category", "raw_type": "object category", "q": "What is the category of the predominant objects seen along the quayside?", "gt": "container-crane"}
+{"qid": "983", "image_id": "P0217_0011.png", "type": "position", "raw_type": "object position", "q": "Is the aircraft located on a road?", "gt": "No"}
+{"qid": "26514", "image_id": "08273_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many expressway service areas are visible?", "gt": "2"}
+{"qid": "7657", "image_id": "P1384_0099.png", "type": "presence", "raw_type": "object existence", "q": "Are there multiple warehouses visible?", "gt": "Yes"}
+{"qid": "16333", "image_id": "P4151_0044.png", "type": "category", "raw_type": "object category", "q": "What class of vehicle is centrally placed and noticeably larger than the others?", "gt": "Large-vehicle"}
+{"qid": "2236", "image_id": "P0615_0003.png", "type": "presence", "raw_type": "object existence", "q": "Does every house in the image have a swimming pool?", "gt": "No"}
+{"qid": "34429", "image_id": "10807_0000.png", "type": "color", "raw_type": "object color", "q": "What color is prevalent within the vegetation areas in the image?", "gt": "green"}
+{"qid": "37118", "image_id": "11628_0000.png", "type": "scene", "raw_type": "scene type", "q": "Is there any vegetation visible in the area surrounding the storage tank?", "gt": "No"}
+{"qid": "35981", "image_id": "11280_0000.png", "type": "size", "raw_type": "object size", "q": "Is the ship large or small in size?", "gt": "small"}
+{"qid": "10193", "image_id": "P1643_0062.png", "type": "quantity", "raw_type": "object quantity", "q": "How many baseball diamonds are there?", "gt": "2"}
+{"qid": "10863", "image_id": "P1786_0052.png", "type": "category", "raw_type": "object category", "q": "What is parallel to the tennis courts on one side?", "gt": "Railway track"}
+{"qid": "7662", "image_id": "P1384_0100.png", "type": "position", "raw_type": "object position", "q": "Where is the top-most storage tank located relative to the large building?", "gt": "near edge"}
+{"qid": "5571", "image_id": "P1230_0075.png", "type": "shape", "raw_type": "object shape", "q": "What is the shape of the ground track field?", "gt": "Oval"}
+{"qid": "20276", "image_id": "06363_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main man-made structure in the image?", "gt": "overpass"}
+{"qid": "11913", "image_id": "P2011_0004.png", "type": "reasoning", "raw_type": "reasoning", "q": "What are the clearly visible small vehicles in the image used for?", "gt": "parking"}
+{"qid": "16730", "image_id": "P5070_0096.png", "type": "color", "raw_type": "object color", "q": "What color are the directional arrows on the parking lot?", "gt": "Yellow"}
+{"qid": "29829", "image_id": "09347_0000.png", "type": "category", "raw_type": "object category", "q": "What type of field does the stadium have?", "gt": "Soccer field"}
+{"qid": "13739", "image_id": "P2592_0001.png", "type": "color", "raw_type": "object color", "q": "What color are the rooftops of the buildings mainly?", "gt": "Red and brown"}
+{"qid": "8587", "image_id": "P1398_0072.png", "type": "color", "raw_type": "object color", "q": "What color is the ground in the image?", "gt": "brown"}
+{"qid": "23178", "image_id": "07266_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there fields for sports visible around the stadium?", "gt": "Yes"}
+{"qid": "8891", "image_id": "P1434_0011.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are in the image?", "gt": "3"}
+{"qid": "16208", "image_id": "P3957_0003.png", "type": "position", "raw_type": "object position", "q": "Is the bridge located in the urban area?", "gt": "Yes"}
+{"qid": "30403", "image_id": "09547_0000.png", "type": "color", "raw_type": "object color", "q": "What is the dominant color of the terrain?", "gt": "brown"}
+{"qid": "34150", "image_id": "10715_0000.png", "type": "category", "raw_type": "object category", "q": "What is placed beside the tarmac?", "gt": "cargo or equipment"}
+{"qid": "35903", "image_id": "11255_0000.png", "type": "color", "raw_type": "object color", "q": "What color is the roof of the structure near the center of the service area?", "gt": "blue"}
+{"qid": "14640", "image_id": "P2714_0036.png", "type": "position", "raw_type": "object position", "q": "What is the position of the bridge within the image?", "gt": "top-middle"}
+{"qid": "22344", "image_id": "07024_0000.png", "type": "position", "raw_type": "object position", "q": "Is the stadium located on the east or west side of the image?", "gt": "East"}
+{"qid": "14545", "image_id": "P2709_0021.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles can be seen in the image?", "gt": "4"}
+{"qid": "4467", "image_id": "P1065_0006.png", "type": "position", "raw_type": "object position", "q": "What object is located near the center of the image?", "gt": "ship"}
+{"qid": "3040", "image_id": "P0887_0022.png", "type": "quantity", "raw_type": "object quantity", "q": "How many buildings are visible in the image?", "gt": "1"}
+{"qid": "145", "image_id": "P0019_0057.png", "type": "category", "raw_type": "object category", "q": "What type of landscape surrounds the harbor and ship?", "gt": "Land"}
+{"qid": "9813", "image_id": "P1566_0031.png", "type": "scene", "raw_type": "scene type", "q": "Is the surrounding area predominantly residential or commercial?", "gt": "mixed"}
+{"qid": "24427", "image_id": "07629_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main man-made feature visible in the image?", "gt": "airstrip"}
+{"qid": "23379", "image_id": "07319_0000.png", "type": "position", "raw_type": "object position", "q": "Is the train station located on the left or right side of the image?", "gt": "right"}
+{"qid": "34960", "image_id": "10960_0000.png", "type": "position", "raw_type": "object position", "q": "Where is the vehicle located?", "gt": "bottom-left"}
+{"qid": "165", "image_id": "P0019_0070.png", "type": "presence", "raw_type": "object existence", "q": "Are there buildings adjacent to any of the harbors?", "gt": "Yes"}
+{"qid": "35180", "image_id": "11026_0000.png", "type": "scene", "raw_type": "scene type", "q": "What is the main structure in the image?", "gt": "Expressway toll station"}
+{"qid": "10434", "image_id": "P1732_0040.png", "type": "scene", "raw_type": "scene type", "q": "What type of area is depicted in the image?", "gt": "Urban"}
+{"qid": "10099", "image_id": "P1601_0026.png", "type": "presence", "raw_type": "object existence", "q": "Is there a roundabout present in the image?", "gt": "Yes"}
+{"qid": "25535", "image_id": "07982_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a parking area seen in this image?", "gt": "No"}
+{"qid": "6880", "image_id": "P1356_0030.png", "type": "category", "raw_type": "object category", "q": "Which object is bottom-most among ships?", "gt": "ship"}
+{"qid": "30026", "image_id": "09426_0000.png", "type": "color", "raw_type": "object color", "q": "What color is the top of the storage tank?", "gt": "White"}
+{"qid": "5807", "image_id": "P1242_0063.png", "type": "quantity", "raw_type": "object quantity", "q": "How many roundabouts are there in the image?", "gt": "2"}
+{"qid": "35899", "image_id": "11254_0000.png", "type": "category", "raw_type": "object category", "q": "What object is visible in the landscape?", "gt": "windmill"}
+{"qid": "4576", "image_id": "P1066_0005.png", "type": "category", "raw_type": "object category", "q": "What is the main structure shown in this image?", "gt": "harbors"}
+{"qid": "1907", "image_id": "P0526_0009.png", "type": "presence", "raw_type": "object existence", "q": "Is there a pier or dock present in the image?", "gt": "Yes"}
+{"qid": "10717", "image_id": "P1754_0004.png", "type": "shape", "raw_type": "object shape", "q": "What shape are the storage tanks?", "gt": "cylindrical"}
+{"qid": "18337", "image_id": "P8656_0055.png", "type": "category", "raw_type": "object category", "q": "What is the main type of object in this parking area?", "gt": "small-vehicle"}
+{"qid": "22532", "image_id": "07083_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there any buildings in close proximity to the storage tanks?", "gt": "No"}
+{"qid": "2299", "image_id": "P0647_0001.png", "type": "presence", "raw_type": "object existence", "q": "Are there trees visible in the image?", "gt": "Yes"}
+{"qid": "35860", "image_id": "11241_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there any tennis equipment visible on the courts?", "gt": "No"}
+{"qid": "9562", "image_id": "P1512_0011.png", "type": "color", "raw_type": "object color", "q": "What is the color of the rooftop of the large building?", "gt": "dark"}
+{"qid": "21514", "image_id": "06765_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main man-made structure in the image?", "gt": "Expressway-toll-station"}
+{"qid": "11557", "image_id": "P1854_0210.png", "type": "position", "raw_type": "object position", "q": "What is the position of the small vehicle identified by obj_id 5?", "gt": "Bottom-left"}
+{"qid": "31847", "image_id": "10003_0000.png", "type": "shape", "raw_type": "object shape", "q": "What is the shape of the storage tanks?", "gt": "Circular"}
+{"qid": "29046", "image_id": "09095_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a parking area visible in the image?", "gt": "Yes"}
+{"qid": "5536", "image_id": "P1230_0005.png", "type": "presence", "raw_type": "object existence", "q": "Is there a bridge visible in the image?", "gt": "Yes"}
+{"qid": "30560", "image_id": "09600_0000.png", "type": "scene", "raw_type": "image", "q": "What type of image is this?", "gt": "satellite"}
+{"qid": "31384", "image_id": "09862_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a body of water visible?", "gt": "Yes"}
+{"qid": "16478", "image_id": "P4151_0096.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are parked along the road?", "gt": "5"}
+{"qid": "6547", "image_id": "P1332_0017.png", "type": "category", "raw_type": "object category", "q": "What object is visible in the bottom-middle of the image?", "gt": "ship"}
+{"qid": "35402", "image_id": "11091_0000.png", "type": "color", "raw_type": "object color", "q": "What color are the boundary lines of the basketball court?", "gt": "White"}
+{"qid": "25243", "image_id": "07889_0000.png", "type": "color", "raw_type": "object color", "q": "What color is the field in the center of the stadium?", "gt": "Green"}
+{"qid": "15151", "image_id": "P2766_0017.png", "type": "presence", "raw_type": "object existence", "q": "Is there a unique large vehicle in the image?", "gt": "Yes"}
+{"qid": "12158", "image_id": "P2168_0003.png", "type": "shape", "raw_type": "object shape", "q": "What is the shape of the baseball diamond?", "gt": "diamond-shaped"}
+{"qid": "3310", "image_id": "P0936_0010.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are visible in the image?", "gt": "9"}
+{"qid": "34906", "image_id": "10945_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is the entire ship visible in the image?", "gt": "No"}
+{"qid": "21264", "image_id": "06687_0000.png", "type": "category", "raw_type": "object category", "q": "What object is displayed at the center of the image?", "gt": "airplane"}
+{"qid": "13077", "image_id": "P2375_0006.png", "type": "shape", "raw_type": "object shape", "q": "What shape is the soccer field?", "gt": "rectangular"}
+{"qid": "22485", "image_id": "07068_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a track visible in the image?", "gt": "Yes"}
+{"qid": "5145", "image_id": "P1149_0055.png", "type": "category", "raw_type": "object category", "q": "What type of vehicle is present in the image?", "gt": "helicopter"}
+{"qid": "33265", "image_id": "10450_0000.png", "type": "category", "raw_type": "object category", "q": "What is the object positioned at the top of the image?", "gt": "overpass"}
+{"qid": "24902", "image_id": "07778_0000.png", "type": "category", "raw_type": "object category", "q": "What is the large rectangular object with white lines?", "gt": "basketball court"}
+{"qid": "20147", "image_id": "06326_0000.png", "type": "size", "raw_type": "object size", "q": "Which object is larger, the baseball field or the ground track field?", "gt": "Ground track field"}
+{"qid": "29965", "image_id": "09404_0000.png", "type": "position", "raw_type": "object position", "q": "Where is the toll station located in the image?", "gt": "Top-left"}
+{"qid": "25832", "image_id": "08077_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there water visible in the image?", "gt": "yes"}
+{"qid": "28249", "image_id": "08847_0000.png", "type": "color", "raw_type": "object color", "q": "What color is the running track?", "gt": "red"}
+{"qid": "31350", "image_id": "09849_0000.png", "type": "position", "raw_type": "object position", "q": "Is the airport located on the left or right side of the image?", "gt": "right"}
+{"qid": "27288", "image_id": "08545_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there any buildings surrounding the track?", "gt": "Yes"}
+{"qid": "11152", "image_id": "P1854_0024.png", "type": "position", "raw_type": "object position", "q": "Is the large vehicle located at the top-left or bottom-right?", "gt": "Top-left"}
+{"qid": "7416", "image_id": "P1380_0065.png", "type": "category", "raw_type": "object category", "q": "What is the object positioned at the bottom-middle of the image?", "gt": "large vehicle"}
+{"qid": "7978", "image_id": "P1390_0065.png", "type": "color", "raw_type": "object color", "q": "What color are the planes?", "gt": "white and dark"}
+{"qid": "16281", "image_id": "P4151_0025.png", "type": "presence", "raw_type": "object existence", "q": "What natural feature can be seen on the bottom right of the image?", "gt": "Tree area"}
+{"qid": "23715", "image_id": "07414_0000.png", "type": "category", "raw_type": "object category", "q": "What type of fields are visible at the bottom of the image?", "gt": "baseball fields"}
+{"qid": "4466", "image_id": "P1065_0006.png", "type": "quantity", "raw_type": "object quantity", "q": "How many ships are visible in the image?", "gt": "2"}
+{"qid": "10802", "image_id": "P1786_0001.png", "type": "quantity", "raw_type": "object quantity", "q": "How many large vehicles are present in the image?", "gt": "2"}
+{"qid": "10384", "image_id": "P1700_0053.png", "type": "position", "raw_type": "object position", "q": "Where is the roundabout located?", "gt": "Bottom-left"}
+{"qid": "35465", "image_id": "11116_0000.png", "type": "size", "raw_type": "object size", "q": "Which tennis court appears to be the largest?", "gt": "Right-most"}
+{"qid": "30599", "image_id": "09615_0000.png", "type": "scene", "raw_type": "scene type", "q": "Is the infield of the baseball field covered in grass or dirt?", "gt": "Dirt"}
+{"qid": "32955", "image_id": "10362_0000.png", "type": "position", "raw_type": "object position", "q": "Is the tennis court positioned towards the edge of the image?", "gt": "Yes"}
+{"qid": "16431", "image_id": "P4151_0073.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are visible?", "gt": "2"}
+{"qid": "3952", "image_id": "P0998_0025.png", "type": "quantity", "raw_type": "object quantity", "q": "How many harbors are visible in the image?", "gt": "2"}
+{"qid": "32839", "image_id": "10320_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many vehicles are visible in the image?", "gt": "1"}
+{"qid": "19502", "image_id": "06134_0000.png", "type": "category", "raw_type": "object category", "q": "What type of sports field is visible in the image?", "gt": "Baseball field"}
+{"qid": "14309", "image_id": "P2678_0012.png", "type": "quantity", "raw_type": "object quantity", "q": "How many ships are visible in the image?", "gt": "2"}
+{"qid": "30639", "image_id": "09629_0000.png", "type": "position", "raw_type": "object position", "q": "Is the dam situated on the left or right side of the image?", "gt": "Right"}
+{"qid": "1969", "image_id": "P0551_0001.png", "type": "quantity", "raw_type": "object quantity", "q": "How many harbors are visible in the image?", "gt": "2"}
+{"qid": "6743", "image_id": "P1342_0058.png", "type": "quantity", "raw_type": "object quantity", "q": "How many bridges are there in the image?", "gt": "2"}
+{"qid": "11383", "image_id": "P1854_0120.png", "type": "presence", "raw_type": "object existence", "q": "Is there a vehicle at the top edge of the image?", "gt": "Yes"}
+{"qid": "23944", "image_id": "07475_0000.png", "type": "scene", "raw_type": "scene type", "q": "What type of structure is prominently featured in this image?", "gt": "Airport"}
+{"qid": "14236", "image_id": "P2645_0031.png", "type": "quantity", "raw_type": "object quantity", "q": "How many harbors are visible in the image?", "gt": "3"}
+{"qid": "36815", "image_id": "11535_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main feature in the image?", "gt": "ground track field"}
+{"qid": "24880", "image_id": "07771_0000.png", "type": "category", "raw_type": "object category", "q": "What type of facility is visible on the right side of the image?", "gt": "Toll station"}
+{"qid": "22403", "image_id": "07041_0000.png", "type": "scene", "raw_type": "scene type", "q": "What is the primary structure visible in the image?", "gt": "Overpass"}
+{"qid": "13255", "image_id": "P2455_0001.png", "type": "scene", "raw_type": "scene type", "q": "What type of area is predominantly seen in the image?", "gt": "residential"}
+{"qid": "11466", "image_id": "P1854_0167.png", "type": "reasoning", "raw_type": "reasoning", "q": "Are the vehicles surrounding the plane primarily used for services or passenger transport?", "gt": "services"}
+{"qid": "14510", "image_id": "P2709_0005.png", "type": "reasoning", "raw_type": "reasoning", "q": "Are the storage tanks in the image similar in size?", "gt": "yes"}
+{"qid": "34112", "image_id": "10706_0000.png", "type": "scene", "raw_type": "scene type", "q": "What is the main road structure visible in this image?", "gt": "overpass"}
+{"qid": "35185", "image_id": "11029_0000.png", "type": "color", "raw_type": "object color", "q": "What is the predominant color of the vegetation?", "gt": "Green"}
+{"qid": "24553", "image_id": "07671_0000.png", "type": "position", "raw_type": "object position", "q": "Are the expressway service areas located on the left or right side of the image?", "gt": "Left"}
+{"qid": "6190", "image_id": "P1275_0055.png", "type": "quantity", "raw_type": "object quantity", "q": "How many ships are visible near the curved structure?", "gt": "Multiple"}
+{"qid": "33288", "image_id": "10455_0000.png", "type": "presence", "raw_type": "object existence", "q": "Does the image extend to show the entire larger baseball field?", "gt": "No"}
+{"qid": "22561", "image_id": "07091_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many vehicles are visible in the parking lot?", "gt": "2"}
+{"qid": "22550", "image_id": "07088_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main object category visible in the image?", "gt": "storage tank"}
+{"qid": "21140", "image_id": "06647_0000.png", "type": "position", "raw_type": "object position", "q": "What is the position of the track field in the image?", "gt": "Bottom"}
+{"qid": "1675", "image_id": "P0457_0004.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are visible?", "gt": "6"}
+{"qid": "14739", "image_id": "P2721_0026.png", "type": "category", "raw_type": "object category", "q": "What category of field is located towards the middle-left of the image?", "gt": "soccer-ball-field"}
+{"qid": "13286", "image_id": "P2455_0013.png", "type": "quantity", "raw_type": "object quantity", "q": "How many large vehicles are prominently visible?", "gt": "3"}
+{"qid": "20452", "image_id": "06417_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there roads visible in the image?", "gt": "Yes"}
+{"qid": "19861", "image_id": "06247_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main structure visible in the image?", "gt": "Parking area"}
+{"qid": "27168", "image_id": "08511_0000.png", "type": "size", "raw_type": "object size", "q": "Does the ship occupy a significant portion of the image?", "gt": "Yes"}
+{"qid": "14183", "image_id": "P2645_0009.png", "type": "scene", "raw_type": "scene type", "q": "Is the image taken near a body of water?", "gt": "Yes"}
+{"qid": "7395", "image_id": "P1380_0034.png", "type": "reasoning", "raw_type": "reasoning", "q": "Are the vehicles clustered in one area or spread out?", "gt": "spread out"}
+{"qid": "32475", "image_id": "10182_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there only one baseball field in the image?", "gt": "Yes"}
+{"qid": "34419", "image_id": "10805_0000.png", "type": "category", "raw_type": "object category", "q": "What category does the unique object in the image belong to?", "gt": "Train station"}
+{"qid": "26058", "image_id": "08144_0000.png", "type": "category", "raw_type": "object category", "q": "What type of area is predominantly featured in the image?", "gt": "golf course"}
+{"qid": "18641", "image_id": "P9467_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there any paved roads in the image?", "gt": "No"}
+{"qid": "26656", "image_id": "08317_0000.png", "type": "position", "raw_type": "object position", "q": "Does the dam extend horizontally across the water body?", "gt": "Yes"}
+{"qid": "22419", "image_id": "07045_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there any visible foliage in the image?", "gt": "Yes"}
+{"qid": "390", "image_id": "P0060_0015.png", "type": "quantity", "raw_type": "object quantity", "q": "How many swimming pools are visible in the image?", "gt": "1"}
+{"qid": "33494", "image_id": "10515_0000.png", "type": "scene", "raw_type": "scene type", "q": "What is the main type of structure visible in this rural area?", "gt": "windmills"}
+{"qid": "29085", "image_id": "09105_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a ship or vehicle situated closer to the top-right corner?", "gt": "Vehicle"}
+{"qid": "37204", "image_id": "11656_0000.png", "type": "position", "raw_type": "object position", "q": "Where is the expressway service area located in the image?", "gt": "Right-middle side"}
+{"qid": "5690", "image_id": "P1240_0011.png", "type": "scene", "raw_type": "image", "q": "Is the image in color or grayscale?", "gt": "grayscale"}
+{"qid": "30680", "image_id": "09644_0000.png", "type": "color", "raw_type": "object color", "q": "Is the field inside the stadium green?", "gt": "yes"}
+{"qid": "27964", "image_id": "08756_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "Are there multiple runways visible at the airport?", "gt": "no"}
+{"qid": "15942", "image_id": "P2802_0077.png", "type": "quantity", "raw_type": "object quantity", "q": "How many large vehicles are visible?", "gt": "1"}
+{"qid": "4624", "image_id": "P1066_0022.png", "type": "category", "raw_type": "object category", "q": "What is the main water structure visible in this image?", "gt": "harbor"}
+{"qid": "3855", "image_id": "P0990_0010.png", "type": "quantity", "raw_type": "object quantity", "q": "Are there more ships than harbors in the image?", "gt": "No"}
+{"qid": "8832", "image_id": "P1429_0008.png", "type": "quantity", "raw_type": "object quantity", "q": "How many ships are visible in the image?", "gt": "2"}
+{"qid": "32536", "image_id": "10203_0000.png", "type": "size", "raw_type": "object size", "q": "Is the windmill of large or small size?", "gt": "large"}
+{"qid": "12635", "image_id": "P2286_0022.png", "type": "presence", "raw_type": "object existence", "q": "Are there storage tanks in the middle-right of the image?", "gt": "No"}
+{"qid": "6382", "image_id": "P1315_0046.png", "type": "category", "raw_type": "object category", "q": "What main object is located in the bottom-middle of the image?", "gt": "bridge"}
+{"qid": "29183", "image_id": "09138_0000.png", "type": "size", "raw_type": "object size", "q": "What is the relative size of the stadium in the image?", "gt": "large"}
+{"qid": "8423", "image_id": "P1397_0110.png", "type": "size", "raw_type": "object size", "q": "Do any of the planes stand out in size compared to the others?", "gt": "No"}
+{"qid": "23205", "image_id": "07274_0000.png", "type": "category", "raw_type": "object category", "q": "What is the object that spans horizontally across the image?", "gt": "bridge"}
+{"qid": "33581", "image_id": "10539_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main man-made structure in the image?", "gt": "dam"}
+{"qid": "621", "image_id": "P0170_0008.png", "type": "position", "raw_type": "object position", "q": "Is there a plane on the far-left side in the image?", "gt": "yes"}
+{"qid": "29553", "image_id": "09261_0000.png", "type": "scene", "raw_type": "scene type", "q": "Are the storage tanks surrounded by natural or artificial elements?", "gt": "natural"}
+{"qid": "4398", "image_id": "P1030_0011.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are visible?", "gt": "6"}
+{"qid": "4048", "image_id": "P1005_0029.png", "type": "position", "raw_type": "object position", "q": "Is the swimming pool located in the front or back yard of the house?", "gt": "backyard"}
+{"qid": "2480", "image_id": "P0683_0007.png", "type": "direction", "raw_type": "object direction", "q": "Do the visible ships have identical orientations?", "gt": "Yes"}
+{"qid": "14440", "image_id": "P2695_0035.png", "type": "category", "raw_type": "object category", "q": "What is the main industrial feature seen in this image?", "gt": "Storage tanks"}
+{"qid": "14162", "image_id": "P2645_0002.png", "type": "quantity", "raw_type": "object quantity", "q": "How many large vehicles are visible at the bottom of the parking area?", "gt": "2"}
+{"qid": "13595", "image_id": "P2570_0001.png", "type": "color", "raw_type": "object color", "q": "What is the main color of the central field?", "gt": "green"}
+{"qid": "20370", "image_id": "06389_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main structure in the image?", "gt": "Sports fields"}
+{"qid": "35143", "image_id": "11012_0000.png", "type": "shape", "raw_type": "object shape", "q": "What is the shape of the stadium in the image?", "gt": "oval"}
+{"qid": "23297", "image_id": "07294_0000.png", "type": "scene", "raw_type": "scene type", "q": "What part of the image shows the highest concentration of built structures?", "gt": "Entire image"}
+{"qid": "24526", "image_id": "07663_0000.png", "type": "position", "raw_type": "object position", "q": "Is the body of water upstream or downstream of the dam calmer?", "gt": "Upstream"}
+{"qid": "35932", "image_id": "11262_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there any parking lots in the image?", "gt": "Yes"}
+{"qid": "24250", "image_id": "07567_0000.png", "type": "reasoning", "raw_type": "reasoning", "q": "Is the track field surrounded on all sides by structures?", "gt": "No"}
+{"qid": "24736", "image_id": "07724_0000.png", "type": "position", "raw_type": "object position", "q": "Where is the vehicle located in the image?", "gt": "center"}
+{"qid": "24953", "image_id": "07792_0000.png", "type": "size", "raw_type": "object size", "q": "Which vehicle appears larger, the one near the top or bottom of the image?", "gt": "bottom"}
+{"qid": "10691", "image_id": "P1752_0055.png", "type": "position", "raw_type": "object position", "q": "Which part of the image is the storage-tank located?", "gt": "bottom-left"}
+{"qid": "26314", "image_id": "08214_0000.png", "type": "scene", "raw_type": "scene type", "q": "What is the main structure visible in the image?", "gt": "Parking lot"}
+{"qid": "768", "image_id": "P0179_0049.png", "type": "presence", "raw_type": "object existence", "q": "Is there a small-vehicle in the middle-left position of the image?", "gt": "Yes"}
+{"qid": "1193", "image_id": "P0331_0011.png", "type": "category", "raw_type": "object category", "q": "What category does the object in the bottom-left corner belong to?", "gt": "ship"}
+{"qid": "9961", "image_id": "P1583_0071.png", "type": "position", "raw_type": "object position", "q": "Where is the baseball diamond located in the image?", "gt": "top-right"}
+{"qid": "6551", "image_id": "P1332_0018.png", "type": "position", "raw_type": "object position", "q": "Where is the ship positioned in the image?", "gt": "middle-right"}
+{"qid": "34544", "image_id": "10836_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a path leading to the tennis courts?", "gt": "Yes"}
+{"qid": "11499", "image_id": "P1854_0181.png", "type": "presence", "raw_type": "object existence", "q": "Is there a plane visible on the tarmac?", "gt": "Yes"}
+{"qid": "5646", "image_id": "P1234_0048.png", "type": "position", "raw_type": "object position", "q": "What is the relative position of the smallest ship?", "gt": "bottom-right"}
+{"qid": "5077", "image_id": "P1147_0042.png", "type": "color", "raw_type": "object color", "q": "What is the color of the airplane?", "gt": "white"}
+{"qid": "27375", "image_id": "08574_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "Are there more stadiums than one visible in the image?", "gt": "No"}
+{"qid": "27797", "image_id": "08698_0000.png", "type": "category", "raw_type": "object category", "q": "What type of large object is present in the image?", "gt": "airplane"}
+{"qid": "25803", "image_id": "08069_0000.png", "type": "scene", "raw_type": "scene type", "q": "What type of facility are the airplanes located at?", "gt": "Airfield"}
+{"qid": "11676", "image_id": "P1903_0002.png", "type": "quantity", "raw_type": "object quantity", "q": "How many baseball diamonds are visible in the image?", "gt": "3"}
+{"qid": "17839", "image_id": "P6769_0130.png", "type": "category", "raw_type": "object category", "q": "What type of objects are primarily visible in the image?", "gt": "small-vehicles"}
+{"qid": "6814", "image_id": "P1356_0014.png", "type": "scene", "raw_type": "scene type", "q": "What type of environments are visible in the image?", "gt": "Natural, structural"}
+{"qid": "762", "image_id": "P0179_0044.png", "type": "scene", "raw_type": "scene type", "q": "Does the area appear to be residential?", "gt": "Yes"}
+{"qid": "27332", "image_id": "08562_0000.png", "type": "scene", "raw_type": "scene type", "q": "What is the main structure featured in the image?", "gt": "road"}
+{"qid": "33779", "image_id": "10604_0000.png", "type": "color", "raw_type": "object color", "q": "What is the primary color of the storage tank?", "gt": "Blue"}
+{"qid": "25830", "image_id": "08077_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there vegetation present in the image?", "gt": "yes"}
+{"qid": "34822", "image_id": "10915_0000.png", "type": "quantity", "raw_type": "object quantity", "q": "How many train stations are visible in the image?", "gt": "1"}
+{"qid": "4572", "image_id": "P1066_0002.png", "type": "position", "raw_type": "object position", "q": "Are the small vehicles on the right or left side of the image?", "gt": "Right"}
+{"qid": "34015", "image_id": "10675_0000.png", "type": "scene", "raw_type": "scene type", "q": "What pattern is visible on the ground?", "gt": "textured"}
+{"qid": "35434", "image_id": "11102_0000.png", "type": "scene", "raw_type": "image", "q": "Which service provided the image?", "gt": "GoogleEarth"}
+{"qid": "21823", "image_id": "06860_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a visible indication of the baseball field's home plate?", "gt": "Yes"}
+{"qid": "12486", "image_id": "P2271_0015.png", "type": "size", "raw_type": "object size", "q": "Is the plane that is located furthest to the right large or small?", "gt": "small"}
+{"qid": "17032", "image_id": "P5789_1301.png", "type": "scene", "raw_type": "scene type", "q": "What type of area is depicted in the image?", "gt": "coastal"}
+{"qid": "21850", "image_id": "06868_0000.png", "type": "presence", "raw_type": "object existence", "q": "Is there a vehicle located in the top-middle portion of the image?", "gt": "Yes"}

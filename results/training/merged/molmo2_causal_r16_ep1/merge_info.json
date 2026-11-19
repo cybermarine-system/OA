@@ -1,0 +1,6 @@
+{
+ "base": "/home/user/ondeviceAI/molmo2/hf_cache/hub/models--allenai--Molmo2-4B/snapshots/042abfa7a38879a376cec03d949eff0aefaa0600",
+ "adapter": "/home/user/ondeviceAI/lora/runs/causal_r16/adapter",
+ "scale": 2.0,
+ "merged_tensors": 144
+}

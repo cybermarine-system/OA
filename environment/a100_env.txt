@@ -1,0 +1,28 @@
+# A100 서버 환경 (2026-11-19 10:33:49 KST)
+## GPU / 드라이버
+name, driver_version, memory.total [MiB]
+NVIDIA A100 80GB PCIe, 595.80, 81920 MiB
+| NVIDIA-SMI 595.80                 Driver Version: 595.80         CUDA Version: 13.2     |
+## OS
+Linux 7.0.0-30-generic x86_64
+PRETTY_NAME="Ubuntu 24.04.4 LTS"
+20
+               total        used        free      shared  buff/cache   available
+Mem:             503          25         237           6         249         477
+## Edge-LLM 소스 (ondeviceAI/edgellm, 읽기만)
+ca510ca feat: Report per-request wall time in llm_inference output
+aa0075e feat: Add host-side Molmo2 image preprocessing
+a9daa3c feat: Add Molmo2 multimodal runner (sidecar preprocessing, causal)
+1231d64 ci: Adopt shared secret scanning and CodeQL suite (#259)
+## C++ 빌드 툴체인 링크 (ondeviceAI/toolchain)
+drwxr-xr-x 3 root root 4096 Oct 22 21:57 cuda-13.0
+drwxr-xr-x 3 root root 4096 Oct 22 21:57 tensorrt-11.4
+include
+lib
+Cuda compilation tools, release 13.0, V13.0.88
+Build cuda_13.0.r13.0/compiler.36424714_0
+## Python
+molmo2/.venv: Python 3.12.3
+.venv-edgellm: Python 3.12.3
+.venv-build: Python 3.12.3
+.venv-docs: Python 3.12.3

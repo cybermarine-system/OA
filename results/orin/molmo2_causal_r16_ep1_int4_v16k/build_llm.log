@@ -1,0 +1,801 @@
+[15:24:16.186] [INFO] [llmBuilder.cpp:316:build] Using TRT_VERSION=10.16.2
+[15:24:16.186] [INFO] [llmBuilder.cpp:320:build] Using __LUNOWUD=-mlir:autotune:num_threads=1 -mlir:collective:fp4=off -cask_fusion:async_policy=1 -peep:fc_h_fusion=off
+[15:24:16.186] [INFO] [trtUtils.h:71:loadEdgellmPluginLib] EDGELLM_PLUGIN_PATH: /home/user/TensorRT-Edge-LLM-1231d64/build/libNvInfer_edgellm_plugin.so
+[15:24:16.413] [INFO] [TensorRT] [MemUsageChange] Init CUDA: CPU +16, GPU +0, now: CPU 23, GPU 3020 (MiB)
+[15:24:16.951] [INFO] [llmBuilder.cpp:373:build] Parsing ONNX model: /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/llm/model.onnx
+[15:24:16.981] [INFO] [TensorRT] ----------------------------------------------------------------
+[15:24:16.981] [INFO] [TensorRT] Input filename:   /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/llm/model.onnx
+[15:24:16.981] [INFO] [TensorRT] ONNX IR version:  0.0.10
+[15:24:16.981] [INFO] [TensorRT] Opset version:    24
+[15:24:16.981] [INFO] [TensorRT] Producer name:    pytorch
+[15:24:16.981] [INFO] [TensorRT] Producer version: 2.13.0+cu130
+[15:24:16.981] [INFO] [TensorRT] Domain:           
+[15:24:16.981] [INFO] [TensorRT] Model version:    0
+[15:24:16.981] [INFO] [TensorRT] Doc string:       
+[15:24:16.981] [INFO] [TensorRT] ----------------------------------------------------------------
+[15:24:16.983] [WARNING] [TensorRT] ModelImporter.cpp:739: Make sure input logits_indices has Int64 binding.
+[15:24:17.002] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:17.002] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:17.002] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:17.002] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:17.002] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:17.003] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:17.003] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:17.003] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:17.003] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:17.003] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:17.004] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.184] [INFO] [pluginJitCompiler.cpp:138:compilePluginJitKernel] Compiled XQA kernel for SM87, dtype=1, kv_dtype=1, head_dim=128, q_heads_per_kv=4, tokens_per_page=128, sliding_window=0, spec_decode=0, contiguous_query_swa=0 with NVRTC (100768 bytes, 3034 ms)
+[15:24:20.187] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.188] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.188] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.189] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.189] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.189] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.189] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.190] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.190] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.190] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.190] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.191] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.191] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.191] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.191] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.191] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.191] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.191] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.191] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.191] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.191] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.192] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.192] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.193] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.193] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.193] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.193] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.193] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.193] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.194] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.194] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.194] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.194] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.194] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.195] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.195] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.195] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.195] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.195] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.195] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.195] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.195] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.195] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.196] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.196] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.197] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.197] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.197] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.197] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.198] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.198] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.198] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.198] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.198] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.198] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.198] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.198] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.199] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.199] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.199] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.199] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.199] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.199] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.200] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.200] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.200] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.200] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.200] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.201] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.201] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.201] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.201] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.201] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.202] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.202] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.202] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.202] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.202] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.202] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.202] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.202] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.203] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.203] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.203] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.203] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.204] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.204] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.204] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.204] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.205] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.205] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.205] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.205] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.205] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.205] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.205] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.205] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.206] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.206] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.206] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.206] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.206] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.206] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.207] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.207] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.207] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.207] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.207] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.208] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.208] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.208] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.209] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.209] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.209] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.209] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.209] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.209] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.209] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.209] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.209] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.209] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.210] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.210] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.211] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.211] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.211] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.211] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.211] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.211] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.212] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.212] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.212] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.212] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.212] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.212] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.213] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.213] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.213] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.213] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.213] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.213] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.213] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.213] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.214] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.214] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.214] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.214] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.215] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.215] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.215] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.215] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.216] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.216] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.216] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.216] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.216] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.216] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.216] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.216] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.216] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.216] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.217] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.217] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.218] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.218] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.218] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.218] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.218] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.218] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.219] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.219] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.219] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.219] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.220] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.220] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.220] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.220] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.220] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.220] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.220] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.220] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.220] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.220] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.221] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.221] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.221] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.222] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.222] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.222] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.223] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.223] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.223] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.223] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.223] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.223] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.223] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.223] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.224] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.224] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.224] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.224] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.224] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.224] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.225] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.225] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.225] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.225] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.225] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.226] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.226] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.226] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.227] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.227] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.227] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.227] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.227] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.227] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.227] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.227] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.227] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.227] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.228] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.228] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.228] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.229] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.229] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.229] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.229] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.229] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.230] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.230] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.230] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.230] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.230] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.230] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.231] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.231] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.231] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.231] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.231] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.231] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.231] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.231] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.232] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.232] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.232] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.232] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.233] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.233] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.234] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.234] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.234] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.234] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.234] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.234] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.234] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.234] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.235] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.235] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.235] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.235] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.235] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.235] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.236] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.236] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.236] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.236] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.237] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.237] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.238] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.238] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.238] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.238] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.238] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.238] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.238] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.238] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.238] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.238] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.238] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.239] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.239] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.239] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.240] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.240] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.240] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.240] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.240] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.240] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.241] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.241] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.241] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.241] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.242] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.242] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.242] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.242] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.242] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.242] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.242] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.242] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.242] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.242] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.243] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.243] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.244] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.244] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.244] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.244] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.245] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.245] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.245] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.245] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.245] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.245] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.245] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.245] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.246] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.246] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.246] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.246] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.246] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.246] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.247] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.247] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.247] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.247] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.247] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.248] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.248] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.248] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.248] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.249] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.249] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.249] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.249] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.249] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.249] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.249] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.249] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.249] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.250] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.250] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.250] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.250] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.251] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.251] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.251] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.251] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.252] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.252] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.252] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.252] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.252] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.252] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.252] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.253] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.253] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.253] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.253] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.253] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.253] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.253] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.254] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.254] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.254] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.254] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.255] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.255] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.255] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.256] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.256] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.256] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.256] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.256] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.256] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.256] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.256] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.256] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.256] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.257] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.257] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.257] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.258] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.258] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.258] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.258] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.258] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.258] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.259] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.259] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.259] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.259] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.260] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.260] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.260] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.260] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.260] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.260] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.260] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.260] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.261] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.261] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.261] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.261] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.262] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.262] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.262] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.262] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.263] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.263] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.263] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.263] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.263] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.263] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.263] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.263] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.264] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.264] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.264] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.264] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.264] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.264] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.265] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.265] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.265] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.265] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.266] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.266] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.267] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.267] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.267] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.267] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.267] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.267] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.267] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.267] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.267] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.267] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.268] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.268] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.268] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.268] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.269] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.269] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.269] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.269] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.269] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.269] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.270] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.270] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.270] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.271] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.271] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.271] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.271] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.271] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.271] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.271] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.271] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.271] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.272] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.272] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.272] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.272] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.273] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.273] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.273] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.273] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.274] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.274] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.274] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.274] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.274] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.274] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.275] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.275] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.275] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.275] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.275] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.275] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.275] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.275] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.276] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.276] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.276] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.276] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.277] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.277] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.278] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.278] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.278] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.278] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.278] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.278] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.278] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.278] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.278] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.278] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.278] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.279] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.279] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.279] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.280] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.280] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.280] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.280] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.280] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.280] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.281] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.281] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.281] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.282] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.282] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.282] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.282] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.282] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.282] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.282] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.282] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.282] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.283] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.283] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.283] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.283] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.284] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.284] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.284] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.284] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.285] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.285] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.285] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.285] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.285] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.286] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.286] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.286] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.286] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.286] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.286] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.286] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.286] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.286] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.287] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.287] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.288] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.288] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.288] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.288] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.289] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.289] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.289] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.289] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.289] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.289] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.289] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.289] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.290] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.290] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.290] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.290] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.290] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.290] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.291] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.291] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.292] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.292] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.292] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.292] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.293] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.293] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.293] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.293] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.293] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.293] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.293] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.293] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.294] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.294] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.294] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.294] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.294] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.294] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.296] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.296] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.296] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.296] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.296] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.296] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.297] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.297] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.297] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.298] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.298] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.298] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.298] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.298] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.298] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.298] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.298] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.298] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.299] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.299] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.299] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.299] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.300] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.300] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.300] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.300] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.301] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.301] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.301] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.301] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.301] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.301] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.301] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.301] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.302] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.302] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.302] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.302] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.302] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.302] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.303] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.303] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.303] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.303] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.304] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.304] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.304] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.304] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.305] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.305] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.305] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.305] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.305] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.305] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.305] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.305] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.305] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.305] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.306] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.306] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.307] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.307] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.307] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.307] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.307] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.307] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.308] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.308] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.309] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.309] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.309] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.309] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.309] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.309] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.309] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.309] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.309] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.309] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.310] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.310] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.311] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.311] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.311] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.311] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.311] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.311] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.312] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.312] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.312] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.312] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.313] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.313] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.313] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.313] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.313] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.313] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.313] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.313] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.313] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.313] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.314] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.314] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.315] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.315] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.315] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.315] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.316] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.316] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.316] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.316] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.316] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.316] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.316] [INFO] [TensorRT] Searching for plugin: QkvConcatPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.316] [INFO] [TensorRT] Successfully created plugin: QkvConcatPlugin
+[15:24:20.317] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:24:20.317] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.317] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[15:24:20.317] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[15:24:20.317] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.317] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.318] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.318] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.318] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.318] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.318] [INFO] [TensorRT] Searching for plugin: Int4GroupwiseGemmPluginV2, plugin_version: 1, plugin_namespace: 
+[15:24:20.319] [INFO] [TensorRT] Successfully created plugin: Int4GroupwiseGemmPluginV2
+[15:24:20.338] [INFO] [llmBuilder.cpp:424:build] Created directory /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/llm for saving LLM engine.
+[15:24:21.241] [INFO] [TensorRT] [MemUsageChange] Init builder kernel library: CPU +153, GPU +195, now: CPU 448, GPU 3471 (MiB)
+[15:24:21.263] [WARNING] [TensorRT] Unused Input: positions
+[15:24:21.263] [WARNING] [TensorRT] Unused Input: state_indices
+[15:24:21.706] [WARNING] [TensorRT] [RemoveDeadLayers] Input Tensor positions is unused or used only at compile-time, but is not being removed.
+[15:24:21.706] [WARNING] [TensorRT] [RemoveDeadLayers] Input Tensor state_indices is unused or used only at compile-time, but is not being removed.
+[15:24:21.721] [INFO] [TensorRT] Local timing cache in use. Profiling results in this builder pass will not be stored.
+[15:24:21.853] [INFO] [TensorRT] Compiler backend is used during engine build.
+[15:24:57.408] [INFO] [TensorRT] [GraphReduction] The approximate region cut reduction algorithm is called.
+[15:24:57.432] [INFO] [TensorRT] Detected 48 inputs and 37 output network tensors.
+[15:25:11.190] [INFO] [TensorRT] Total Host Persistent Memory: 289808 bytes
+[15:25:11.192] [INFO] [TensorRT] Total Device Persistent Memory: 0 bytes
+[15:25:11.192] [INFO] [TensorRT] Max Scratch Memory: 17302016 bytes
+[15:25:11.193] [INFO] [TensorRT] [BlockAssignment] Started assigning block shifts. This will take 765 steps to complete.
+[15:25:11.272] [INFO] [TensorRT] [BlockAssignment] Algorithm ShiftNTopDown took 79.3995ms to assign 15 blocks to 765 nodes requiring 77598720 bytes.
+[15:25:11.273] [INFO] [TensorRT] Total Activation Memory: 77598720 bytes
+[15:25:22.309] [INFO] [TensorRT] [GraphReduction] The approximate region cut reduction algorithm is called.
+[15:25:22.339] [INFO] [TensorRT] Detected 48 inputs and 37 output network tensors.
+[15:25:26.835] [INFO] [TensorRT] Total Host Persistent Memory: 289808 bytes
+[15:25:26.835] [INFO] [TensorRT] Total Device Persistent Memory: 0 bytes
+[15:25:26.835] [INFO] [TensorRT] Max Scratch Memory: 4731392 bytes
+[15:25:26.836] [INFO] [TensorRT] [BlockAssignment] Started assigning block shifts. This will take 765 steps to complete.
+[15:25:26.918] [INFO] [TensorRT] [BlockAssignment] Algorithm ShiftNTopDown took 82.1463ms to assign 15 blocks to 765 nodes requiring 4791808 bytes.
+[15:25:26.919] [INFO] [TensorRT] Total Activation Memory: 4791808 bytes
+[15:25:27.178] [INFO] [TensorRT] Total Weights Memory: 1959656832 bytes
+[15:25:27.210] [INFO] [TensorRT] Compiler backend is used during engine execution.
+[15:25:27.211] [INFO] [TensorRT] Engine generation completed in 65.4908 seconds.
+[15:25:27.222] [INFO] [TensorRT] [MemUsageStats] Peak memory usage of TRT CPU/GPU memory allocators: CPU 0 MiB, GPU 3072 MiB
+[15:25:29.947] [INFO] [TensorRT] [MemUsageStats] Peak memory usage during Engine building and serialization: CPU: 5078 MiB
+[15:25:32.483] [INFO] [builderUtils.cpp:392:buildAndSerializeEngine] Engine saved to /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/llm/llm.engine
+[15:25:32.747] [INFO] [llmBuilder.cpp:2115:copyConfig] Copied config.json with builder config to /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/llm/config.json
+[15:25:32.748] [INFO] [fileUtils.cpp:48:copyFile] Successfully copied /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/llm/tokenizer_config.json to /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/llm/tokenizer_config.json
+[15:25:32.748] [INFO] [llmBuilder.cpp:2145:copyTokenizerFiles] Copied tokenizer file: tokenizer_config.json
+[15:25:32.765] [INFO] [fileUtils.cpp:48:copyFile] Successfully copied /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/llm/tokenizer.json to /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/llm/tokenizer.json
+[15:25:32.765] [INFO] [llmBuilder.cpp:2145:copyTokenizerFiles] Copied tokenizer file: tokenizer.json
+[15:25:32.765] [INFO] [fileUtils.cpp:48:copyFile] Successfully copied /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/llm/chat_template.jinja to /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/llm/chat_template.jinja
+[15:25:32.766] [INFO] [fileUtils.cpp:48:copyFile] Successfully copied /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/llm/vocab_map.safetensors to /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/llm/vocab_map.safetensors
+[15:25:32.766] [INFO] [llmBuilder.cpp:2354:copyVocabMappingFiles] Copied vocab_map.safetensors to /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/llm/vocab_map.safetensors
+[15:25:33.908] [INFO] [fileUtils.cpp:48:copyFile] Successfully copied /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/llm/embedding.safetensors to /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/llm/embedding.safetensors
+[15:25:33.908] [INFO] [llmBuilder.cpp:2456:copyEmbeddingFile] Copied embedding.safetensors to /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/llm/embedding.safetensors
+[15:25:38.360] [INFO] [llm_build.cpp:380:main] [TP rank 0/1] LLM engine built successfully.
+	Command being timed: "/home/user/TensorRT-Edge-LLM-1231d64/build/examples/llm/llm_build --onnxDir /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/llm --engineDir /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/llm --maxInputLen 1024 --maxKVCacheCapacity 1152 --maxBatchSize 1"
+	User time (seconds): 57.90
+	System time (seconds): 15.33
+	Percent of CPU this job got: 85%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:25.71
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5200180
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 68467
+	Minor (reclaiming a frame) page faults: 1158683
+	Voluntary context switches: 103032
+	Involuntary context switches: 13930
+	Swaps: 0
+	File system inputs: 8586880
+	File system outputs: 5424088
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

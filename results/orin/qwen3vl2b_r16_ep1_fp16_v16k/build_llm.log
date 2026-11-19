@@ -1,0 +1,186 @@
+[11:32:51.984] [INFO] [llmBuilder.cpp:316:build] Using TRT_VERSION=10.16.2
+[11:32:51.984] [INFO] [llmBuilder.cpp:320:build] Using __LUNOWUD=-mlir:autotune:num_threads=1 -mlir:collective:fp4=off -cask_fusion:async_policy=1 -peep:fc_h_fusion=off
+[11:32:51.984] [INFO] [trtUtils.h:71:loadEdgellmPluginLib] EDGELLM_PLUGIN_PATH: /home/user/TensorRT-Edge-LLM-1231d64/build/libNvInfer_edgellm_plugin.so
+[11:32:52.189] [INFO] [TensorRT] [MemUsageChange] Init CUDA: CPU +16, GPU +0, now: CPU 23, GPU 864 (MiB)
+[11:32:52.714] [INFO] [llmBuilder.cpp:373:build] Parsing ONNX model: /home/user/vrs_bundle_v2/qwen3vl2b_r16_ep1_fp16_v16k/llm/model.onnx
+[11:32:52.721] [INFO] [TensorRT] ----------------------------------------------------------------
+[11:32:52.721] [INFO] [TensorRT] Input filename:   /home/user/vrs_bundle_v2/qwen3vl2b_r16_ep1_fp16_v16k/llm/model.onnx
+[11:32:52.721] [INFO] [TensorRT] ONNX IR version:  0.0.10
+[11:32:52.721] [INFO] [TensorRT] Opset version:    24
+[11:32:52.721] [INFO] [TensorRT] Producer name:    pytorch
+[11:32:52.721] [INFO] [TensorRT] Producer version: 2.13.0+cu130
+[11:32:52.721] [INFO] [TensorRT] Domain:           
+[11:32:52.721] [INFO] [TensorRT] Model version:    0
+[11:32:52.722] [INFO] [TensorRT] Doc string:       
+[11:32:52.722] [INFO] [TensorRT] ----------------------------------------------------------------
+[11:32:52.722] [WARNING] [TensorRT] ModelImporter.cpp:739: Make sure input logits_indices has Int64 binding.
+[11:32:52.728] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:52.728] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:52.728] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.401] [INFO] [pluginJitCompiler.cpp:138:compilePluginJitKernel] Compiled XQA kernel for SM87, dtype=1, kv_dtype=1, head_dim=128, q_heads_per_kv=2, tokens_per_page=128, sliding_window=0, spec_decode=0, contiguous_query_swa=0 with NVRTC (101024 bytes, 555 ms)
+[11:32:53.404] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.406] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.406] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.406] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.406] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.408] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.408] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.408] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.408] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.410] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.410] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.410] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.410] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.412] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.412] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.412] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.412] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.414] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.414] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.414] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.414] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.416] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.416] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.416] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.416] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.418] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.418] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.418] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.418] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.420] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.420] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.420] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.420] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.422] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.422] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.422] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.422] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.424] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.424] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.424] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.424] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.426] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.426] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.426] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.426] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.427] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.427] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.428] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.428] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.429] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.429] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.429] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.430] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.431] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.431] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.431] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.432] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.433] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.434] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.434] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.434] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.435] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.436] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.436] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.436] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.437] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.438] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.438] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.438] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.439] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.440] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.440] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.440] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.441] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.442] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.442] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.442] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.444] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.444] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.444] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.444] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.446] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.446] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.446] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.446] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.448] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.448] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.448] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.448] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.450] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.450] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.450] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.450] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.452] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.452] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.452] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.452] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.454] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.454] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.454] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.454] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.456] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.456] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.456] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.456] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.458] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[11:32:53.458] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute supports_bounded_kv_cache not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.458] [WARNING] [TensorRT] onnxOpImporters.cpp:7639: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[11:32:53.458] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[11:32:53.469] [INFO] [llmBuilder.cpp:1628:setupDeepstackProfiles] Detected 3 deepstack embedding inputs
+[11:32:53.469] [INFO] [llmBuilder.cpp:1633:setupDeepstackProfiles] Setting up optimization profile for deepstack_embeds_0
+[11:32:53.469] [INFO] [llmBuilder.cpp:1633:setupDeepstackProfiles] Setting up optimization profile for deepstack_embeds_1
+[11:32:53.469] [INFO] [llmBuilder.cpp:1633:setupDeepstackProfiles] Setting up optimization profile for deepstack_embeds_2
+[11:32:53.469] [INFO] [llmBuilder.cpp:424:build] Created directory /home/user/vrs_bundle_v2/qwen3vl2b_r16_ep1_fp16_v16k/engines/llm for saving LLM engine.
+[11:32:54.309] [INFO] [TensorRT] [MemUsageChange] Init builder kernel library: CPU +146, GPU +148, now: CPU 439, GPU 1264 (MiB)
+[11:32:54.319] [WARNING] [TensorRT] Unused Input: positions
+[11:32:54.319] [WARNING] [TensorRT] Unused Input: state_indices
+[11:32:54.448] [WARNING] [TensorRT] [RemoveDeadLayers] Input Tensor positions is unused or used only at compile-time, but is not being removed.
+[11:32:54.448] [WARNING] [TensorRT] [RemoveDeadLayers] Input Tensor state_indices is unused or used only at compile-time, but is not being removed.
+[11:32:54.454] [INFO] [TensorRT] Local timing cache in use. Profiling results in this builder pass will not be stored.
+[11:32:54.507] [INFO] [TensorRT] Compiler backend is used during engine build.
+[11:33:45.068] [INFO] [TensorRT] [GraphReduction] The approximate region cut reduction algorithm is called.
+[11:33:45.072] [INFO] [TensorRT] Detected 43 inputs and 29 output network tensors.
+[11:33:46.398] [INFO] [TensorRT] Total Host Persistent Memory: 68176 bytes
+[11:33:46.398] [INFO] [TensorRT] Total Device Persistent Memory: 0 bytes
+[11:33:46.398] [INFO] [TensorRT] Max Scratch Memory: 50331648 bytes
+[11:33:46.399] [INFO] [TensorRT] [BlockAssignment] Started assigning block shifts. This will take 149 steps to complete.
+[11:33:46.410] [INFO] [TensorRT] [BlockAssignment] Algorithm ShiftNTopDown took 11.6046ms to assign 15 blocks to 149 nodes requiring 79696896 bytes.
+[11:33:46.411] [INFO] [TensorRT] Total Activation Memory: 79696896 bytes
+[11:34:50.139] [INFO] [TensorRT] [GraphReduction] The approximate region cut reduction algorithm is called.
+[11:34:50.145] [INFO] [TensorRT] Detected 43 inputs and 29 output network tensors.
+[11:34:50.942] [INFO] [TensorRT] Total Host Persistent Memory: 68176 bytes
+[11:34:50.942] [INFO] [TensorRT] Total Device Persistent Memory: 0 bytes
+[11:34:50.942] [INFO] [TensorRT] Max Scratch Memory: 4727296 bytes
+[11:34:50.942] [INFO] [TensorRT] [BlockAssignment] Started assigning block shifts. This will take 149 steps to complete.
+[11:34:50.954] [INFO] [TensorRT] [BlockAssignment] Algorithm ShiftNTopDown took 11.1443ms to assign 15 blocks to 149 nodes requiring 4761088 bytes.
+[11:34:50.954] [INFO] [TensorRT] Total Activation Memory: 4761088 bytes
+[11:34:51.016] [ERROR] [TensorRT] [resizingAllocator.cpp::allocateImpl::102] Error Code 1: Cuda Runtime (In allocateImpl at /_src/optimizer/builder/resizingAllocator.cpp:102)
+[11:34:51.016] [WARNING] [TensorRT] Requested amount of GPU memory (5704487168 bytes) could not be allocated. There may not be enough free memory for allocation to succeed.
+[11:34:51.171] [ERROR] [TensorRT] [myelinResourceManager.cpp::allocate::209] Error Code 2: OutOfMemory (Requested size was 5704487168 bytes.)
+[11:34:51.171] [ERROR] [builderUtils.cpp:371:buildAndSerializeEngine] Failed to build serialized engine
+[11:34:51.896] [ERROR] [llm_build.cpp:376:main] Failed to build LLM engine.
+Command exited with non-zero status 1
+	Command being timed: "/home/user/TensorRT-Edge-LLM-1231d64/build/examples/llm/llm_build --onnxDir /home/user/vrs_bundle_v2/qwen3vl2b_r16_ep1_fp16_v16k/llm --engineDir /home/user/vrs_bundle_v2/qwen3vl2b_r16_ep1_fp16_v16k/engines/llm --maxInputLen 1024 --maxKVCacheCapacity 1152 --maxBatchSize 1"
+	User time (seconds): 109.10
+	System time (seconds): 9.88
+	Percent of CPU this job got: 97%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:01.61
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 6841136
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 22422
+	Minor (reclaiming a frame) page faults: 1681564
+	Voluntary context switches: 34857
+	Involuntary context switches: 12341
+	Swaps: 0
+	File system inputs: 7165488
+	File system outputs: 59584
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1

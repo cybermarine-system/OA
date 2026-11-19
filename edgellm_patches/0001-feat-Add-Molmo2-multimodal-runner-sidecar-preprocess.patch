@@ -1,0 +1,537 @@
+From a9daa3c42f273bd80c335246230a832038b30b90 Mon Sep 17 00:00:00 2001
+Date: Thu, 22 Oct 2026 22:08:35 +0900
+Subject: [PATCH 1/3] feat: Add Molmo2 multimodal runner (sidecar
+ preprocessing, causal)
+
+Assemble the Molmo2 image block (pooled patch features plus special
+start/end/column tokens from the Molmo2 extra embedding table) as the
+vision embedding and emit every image-block position as image_token_id,
+so the shared embeddingLookup path injects it without enlarging the LLM
+vocabulary. Image preprocessing and input_ids come from a per-request
+sidecar produced by the HF processor.
+
+---
+ cpp/multimodal/common/modelTypes.h         |   3 +
+ cpp/multimodal/common/multimodalRunner.cpp |   5 +
+ cpp/multimodal/molmo2/molmo2ViTRunner.cpp  | 360 +++++++++++++++++++++
+ cpp/multimodal/molmo2/molmo2ViTRunner.h    |  97 ++++++
+ 4 files changed, 465 insertions(+)
+ create mode 100644 cpp/multimodal/molmo2/molmo2ViTRunner.cpp
+ create mode 100644 cpp/multimodal/molmo2/molmo2ViTRunner.h
+
+diff --git a/cpp/multimodal/common/modelTypes.h b/cpp/multimodal/common/modelTypes.h
+index f9d2637..3e0f105 100644
+--- a/cpp/multimodal/common/modelTypes.h
++++ b/cpp/multimodal/common/modelTypes.h
+@@ -46,6 +46,7 @@ enum class ModelType
+     GEMMA4_AUDIO_ENCODER,          //!< Gemma4 audio encoder
+     COSMOS3_EDGE,                  //!< Cosmos3-Edge reasoner vision encoder (SigLIP2 + PatchMerger)
+     MUSE_GLIMMER,                  //!< Muse-Glimmer vision encoder
++    MOLMO2,                        //!< Molmo2 vision encoder (SigLIP2 + attention pooling)
+     UNKNOWN                        //!< Unknown or unsupported model type
+ };
+ 
+@@ -94,6 +95,8 @@ inline ModelType stringToModelType(std::string const& modelTypeStr)
+         return ModelType::COSMOS3_EDGE;
+     if (modelTypeStr == "muse_glimmer" || modelTypeStr == "muse_glimmer_vision")
+         return ModelType::MUSE_GLIMMER;
++    if (modelTypeStr == "molmo2" || modelTypeStr == "molmo2_vision")
++        return ModelType::MOLMO2;
+     return ModelType::UNKNOWN;
+ }
+ 
+diff --git a/cpp/multimodal/common/multimodalRunner.cpp b/cpp/multimodal/common/multimodalRunner.cpp
+index a5f51f8..2fc4f02 100644
+--- a/cpp/multimodal/common/multimodalRunner.cpp
++++ b/cpp/multimodal/common/multimodalRunner.cpp
+@@ -24,6 +24,7 @@
+ #include "multimodal/gemma4/gemma4UnifiedVisionRunner.h"
+ #include "multimodal/gemma4/gemma4ViTRunner.h"
+ #include "multimodal/internvl/internViTRunner.h"
++#include "multimodal/molmo2/molmo2ViTRunner.h"
+ #include "multimodal/muse_glimmer/museGlimmerViTRunner.h"
+ #include "multimodal/nemotron_omni/nemotronOmniAudioRunner.h"
+ #include "multimodal/nemotron_omni/nemotronOmniViTRunner.h"
+@@ -213,6 +214,10 @@ std::unique_ptr<MultimodalRunner> MultimodalRunner::create(std::string const& mu
+     {
+         multimodalRunner = std::make_unique<InternViTRunner>(multimodalEngineDir, stream);
+     }
++    else if (modelType == multimodal::ModelType::MOLMO2)
++    {
++        multimodalRunner = std::make_unique<Molmo2ViTRunner>(multimodalEngineDir, stream);
++    }
+     else if (modelType == multimodal::ModelType::PHI4MM)
+     {
+         multimodalRunner = std::make_unique<Phi4MMViTRunner>(multimodalEngineDir, stream);
+diff --git a/cpp/multimodal/molmo2/molmo2ViTRunner.cpp b/cpp/multimodal/molmo2/molmo2ViTRunner.cpp
+new file mode 100644
+index 0000000..aa6ec06
+--- /dev/null
++++ b/cpp/multimodal/molmo2/molmo2ViTRunner.cpp
+@@ -0,0 +1,360 @@
++/*
++ * SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
++ * SPDX-License-Identifier: Apache-2.0
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ * http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++#include "multimodal/molmo2/molmo2ViTRunner.h"
++#include "common/checkMacros.h"
++#include "common/safetensorsUtils.h"
++#include "profiling/metrics.h"
++#include "profiling/timer.h"
++#include <array>
++#include <cstring>
++#include <filesystem>
++#include <fstream>
++#include <nlohmann/json.hpp>
++#include <stdexcept>
++
++using Json = nlohmann::json;
++
++namespace trt_edgellm
++{
++namespace rt
++{
++
++namespace
++{
++constexpr char const* kImagesName = "images";
++constexpr char const* kPooledIdxName = "pooled_patches_idx";
++constexpr char const* kPatchEmbedsName = "patch_embeds";
++constexpr std::array<char, 8> kSidecarMagic{'M', 'O', 'L', 'M', 'O', '2', 'P', 'P'};
++
++enum class SidecarDtype : uint32_t
++{
++    kINT32 = 0,
++    kHALF = 1,
++    kINT64 = 2,
++};
++
++struct SidecarArray
++{
++    SidecarDtype dtype{};
++    std::vector<int64_t> dims;
++    int64_t numBytes{0};
++};
++
++template <typename T>
++T readPod(std::ifstream& in)
++{
++    T value{};
++    in.read(reinterpret_cast<char*>(&value), sizeof(T));
++    ELLM_CHECK(in.good(), "Molmo2 sidecar truncated");
++    return value;
++}
++
++SidecarArray readArrayHeader(std::ifstream& in)
++{
++    SidecarArray arr;
++    arr.dtype = static_cast<SidecarDtype>(readPod<uint32_t>(in));
++    uint32_t const ndim = readPod<uint32_t>(in);
++    ELLM_CHECK(ndim >= 1 && ndim <= 4, "Molmo2 sidecar: bad ndim " + std::to_string(ndim));
++    int64_t volume = 1;
++    for (uint32_t i = 0; i < ndim; ++i)
++    {
++        arr.dims.push_back(readPod<int64_t>(in));
++        volume *= arr.dims.back();
++    }
++    int64_t const elemSize = arr.dtype == SidecarDtype::kHALF ? 2 : (arr.dtype == SidecarDtype::kINT32 ? 4 : 8);
++    arr.numBytes = volume * elemSize;
++    return arr;
++}
++
++std::string findImagePath(LLMGenerationRequest::Request const& req)
++{
++    for (auto const& msg : req.messages)
++    {
++        for (auto const& content : msg.contents)
++        {
++            if (content.type == "image")
++            {
++                return content.content;
++            }
++        }
++    }
++    return {};
++}
++} // namespace
++
++Molmo2ViTRunner::Molmo2ViTRunner(std::string const& engineDir, cudaStream_t stream)
++    : MultimodalRunner(engineDir, stream)
++    , mEngineDir(engineDir)
++{
++    if (!validateAndFillConfig(engineDir))
++    {
++        throw std::runtime_error("Molmo2ViTRunner::Molmo2ViTRunner(): Failed to validate and fill config");
++    }
++    if (!allocateBuffer(stream))
++    {
++        throw std::runtime_error("Molmo2ViTRunner::Molmo2ViTRunner(): Failed to allocate buffer");
++    }
++}
++
++bool Molmo2ViTRunner::validateAndFillConfig(std::string const& engineDir)
++{
++    std::string const configPath = engineDir + "/config.json";
++    std::ifstream configFileStream(configPath);
++    if (!configFileStream.is_open())
++    {
++        LOG_ERROR("Failed to open config file: %s", configPath.c_str());
++        return false;
++    }
++    Json jsonConfig;
++    try
++    {
++        jsonConfig = Json::parse(configFileStream);
++    }
++    catch (Json::parse_error const& e)
++    {
++        LOG_ERROR("Failed to parse config file with error: %s", e.what());
++        return false;
++    }
++
++    mModelType = multimodal::stringToModelType(jsonConfig["model_type"].get<std::string>());
++    if (mModelType != multimodal::ModelType::MOLMO2)
++    {
++        LOG_ERROR("Invalid model type for Molmo2ViTRunner");
++        return false;
++    }
++    mConfig.vocabSize = jsonConfig["vocab_size"].get<int32_t>();
++    mConfig.hiddenSize = jsonConfig["hidden_size"].get<int64_t>();
++    mConfig.imagePatchId = jsonConfig["image_patch_id"].get<int32_t>();
++    mConfig.imageTokenId = jsonConfig.value("image_token_id", mConfig.imagePatchId);
++    mConfig.inputSuffix = jsonConfig.value("preprocessed_input_suffix", mConfig.inputSuffix);
++
++    nvinfer1::Dims const imagesMax
++        = mVisualEngine->getProfileShape(kImagesName, 0, nvinfer1::OptProfileSelector::kMAX);
++    nvinfer1::Dims const idxMax = mVisualEngine->getProfileShape(kPooledIdxName, 0, nvinfer1::OptProfileSelector::kMAX);
++    ELLM_CHECK(imagesMax.nbDims == 4 && idxMax.nbDims == 3, "Unexpected Molmo2 visual engine input ranks");
++    mConfig.maxNumCrops = imagesMax.d[1];
++    mConfig.patchesPerCrop = imagesMax.d[2];
++    mConfig.pixelsPerPatch = imagesMax.d[3];
++    mConfig.maxNumPatches = idxMax.d[1];
++
++    ELLM_CHECK(mVisualEngine->getTensorDataType(kImagesName) == nvinfer1::DataType::kHALF,
++        "Molmo2 visual engine must take FP16 images");
++    ELLM_CHECK(mVisualEngine->getTensorDataType(kPooledIdxName) == nvinfer1::DataType::kINT64,
++        "Molmo2 visual engine must take INT64 pooled_patches_idx");
++    ELLM_CHECK(mVisualEngine->getTensorDataType(kPatchEmbedsName) == nvinfer1::DataType::kHALF,
++        "Molmo2 visual engine must produce FP16 patch_embeds");
++    return true;
++}
++
++bool Molmo2ViTRunner::allocateBuffer(cudaStream_t stream)
++{
++    mImages = rt::Tensor({1, mConfig.maxNumCrops, mConfig.patchesPerCrop, mConfig.pixelsPerPatch},
++        rt::DeviceType::kGPU, nvinfer1::DataType::kHALF, "Molmo2ViTRunner::mImages");
++    mImagesHost = rt::Tensor({1, mConfig.maxNumCrops, mConfig.patchesPerCrop, mConfig.pixelsPerPatch},
++        rt::DeviceType::kCPU, nvinfer1::DataType::kHALF, "Molmo2ViTRunner::mImagesHost");
++    mPooledIdx = rt::Tensor({1, mConfig.maxNumPatches, 4}, rt::DeviceType::kGPU, nvinfer1::DataType::kINT64,
++        "Molmo2ViTRunner::mPooledIdx");
++    mPooledIdxHost = rt::Tensor({1, mConfig.maxNumPatches, 4}, rt::DeviceType::kCPU, nvinfer1::DataType::kINT64,
++        "Molmo2ViTRunner::mPooledIdxHost");
++    mPatchEmbeds = rt::Tensor({mConfig.maxNumPatches, mConfig.hiddenSize}, rt::DeviceType::kGPU,
++        nvinfer1::DataType::kHALF, "Molmo2ViTRunner::mPatchEmbeds");
++
++    // Every image-block token gets a row: pooled patches plus column/start/end markers (at most one per patch row).
++    int64_t const maxBlockTokens = 2 * mConfig.maxNumPatches + 4 * mConfig.maxNumCrops;
++    mOutputEmbedding = rt::Tensor({maxBlockTokens, mConfig.hiddenSize}, rt::DeviceType::kGPU,
++        nvinfer1::DataType::kHALF, "Molmo2ViTRunner::mOutputEmbedding");
++
++    bool ok = mVisualContext->setTensorAddress(kImagesName, mImages.rawPointer());
++    ok &= mVisualContext->setTensorAddress(kPooledIdxName, mPooledIdx.rawPointer());
++    ok &= mVisualContext->setTensorAddress(kPatchEmbedsName, mPatchEmbeds.rawPointer());
++    if (!ok)
++    {
++        LOG_ERROR("Failed to set tensor address to the Molmo2 visual engine");
++        return false;
++    }
++
++    Json jsonConfig = Json::parse(std::ifstream(mEngineDir + "/config.json"));
++    std::filesystem::path const specialPath
++        = std::filesystem::path(mEngineDir) / jsonConfig["special_embedding_file"].get<std::string>();
++    std::vector<rt::Tensor> loaded;
++    if (!rt::safetensors::loadSafetensors(specialPath, loaded, stream) || loaded.size() != 1)
++    {
++        LOG_ERROR("Failed to load Molmo2 special embedding table from %s", specialPath.c_str());
++        return false;
++    }
++    mSpecialEmbedding = std::move(loaded[0]);
++    ELLM_CHECK(mSpecialEmbedding.getDataType() == nvinfer1::DataType::kHALF
++            && mSpecialEmbedding.getDeviceType() == rt::DeviceType::kGPU
++            && mSpecialEmbedding.getShape()[1] == mConfig.hiddenSize,
++        "Molmo2 special embedding must be an FP16 GPU tensor of shape [N, hidden]");
++    mConfig.numSpecialTokens = mSpecialEmbedding.getShape()[0];
++    return true;
++}
++
++void Molmo2ViTRunner::loadSidecar(std::string const& path, std::vector<int32_t>& inputIds, cudaStream_t stream)
++{
++    std::ifstream in(path, std::ios::binary);
++    ELLM_CHECK(in.is_open(), "Molmo2 preprocessed input not found: " + path);
++    std::array<char, 8> magic{};
++    in.read(magic.data(), magic.size());
++    ELLM_CHECK(in.good() && magic == kSidecarMagic, "Bad Molmo2 sidecar magic: " + path);
++    uint32_t const version = readPod<uint32_t>(in);
++    uint32_t const numArrays = readPod<uint32_t>(in);
++    ELLM_CHECK(version == 1 && numArrays == 3, "Unsupported Molmo2 sidecar version/layout: " + path);
++
++    SidecarArray const ids = readArrayHeader(in);
++    ELLM_CHECK(ids.dtype == SidecarDtype::kINT32 && ids.dims.size() == 1, "Molmo2 sidecar: input_ids must be int32 [L]");
++    inputIds.resize(ids.dims[0]);
++    in.read(reinterpret_cast<char*>(inputIds.data()), ids.numBytes);
++
++    SidecarArray const pix = readArrayHeader(in);
++    ELLM_CHECK(pix.dtype == SidecarDtype::kHALF && pix.dims.size() == 3 && pix.dims[1] == mConfig.patchesPerCrop
++            && pix.dims[2] == mConfig.pixelsPerPatch,
++        "Molmo2 sidecar: pixel_values must be fp16 [T, patchesPerCrop, pixelsPerPatch]");
++    mNumCrops = pix.dims[0];
++    ELLM_CHECK(mNumCrops >= 1 && mNumCrops <= mConfig.maxNumCrops,
++        "Molmo2 crop count " + std::to_string(mNumCrops) + " outside engine profile");
++    in.read(static_cast<char*>(mImagesHost.rawPointer()), pix.numBytes);
++
++    SidecarArray const pool = readArrayHeader(in);
++    ELLM_CHECK(pool.dtype == SidecarDtype::kINT64 && pool.dims.size() == 2 && pool.dims[1] == 4,
++        "Molmo2 sidecar: image_token_pooling must be int64 [P, 4]");
++    mNumPatches = pool.dims[0];
++    ELLM_CHECK(mNumPatches >= 1 && mNumPatches <= mConfig.maxNumPatches,
++        "Molmo2 pooled patch count " + std::to_string(mNumPatches) + " outside engine profile");
++    in.read(static_cast<char*>(mPooledIdxHost.rawPointer()), pool.numBytes);
++    ELLM_CHECK(in.good(), "Molmo2 sidecar truncated: " + path);
++
++    check::check(mImages.reshape({1, mNumCrops, mConfig.patchesPerCrop, mConfig.pixelsPerPatch}), "reshape failed");
++    check::check(mPooledIdx.reshape({1, mNumPatches, 4}), "reshape failed");
++    check::check(mPatchEmbeds.reshape({mNumPatches, mConfig.hiddenSize}), "reshape failed");
++    CUDA_CHECK(cudaMemcpyAsync(mImages.rawPointer(), mImagesHost.rawPointer(), pix.numBytes, cudaMemcpyHostToDevice, stream));
++    CUDA_CHECK(cudaMemcpyAsync(
++        mPooledIdx.rawPointer(), mPooledIdxHost.rawPointer(), pool.numBytes, cudaMemcpyHostToDevice, stream));
++}
++
++bool Molmo2ViTRunner::preprocess(rt::LLMGenerationRequest const& request,
++    std::vector<std::vector<int32_t>>& batchedInputIds, [[maybe_unused]] tokenizer::Tokenizer const* tokenizer,
++    [[maybe_unused]] rt::OptionalOutputTensor mropeCosSinOut, cudaStream_t stream, bool imageOnly,
++    [[maybe_unused]] bool skipEncoderWork)
++{
++    try
++    {
++        ELLM_CHECK(request.requests.size() == 1, "Molmo2ViTRunner supports batch size 1");
++        auto const& req = request.requests[0];
++        ELLM_CHECK(req.imageBuffers.size() == 1, "EDGELLM_BAD_MEDIA_COUNT: Molmo2ViTRunner expects one image");
++        std::string const imagePath = findImagePath(req);
++        ELLM_CHECK(!imagePath.empty(), "Molmo2ViTRunner: request has no image path");
++        std::filesystem::path sidecar(imagePath);
++        sidecar.replace_extension(mConfig.inputSuffix);
++
++        std::vector<int32_t> ids;
++        loadSidecar(sidecar.string(), ids, stream);
++
++        // Build the row plan and rewrite every image-block id to the shared placeholder.
++        mCopyRuns.clear();
++        int64_t patchRow = 0;
++        int64_t blockRow = 0;
++        for (auto& id : ids)
++        {
++            if (id < mConfig.vocabSize)
++            {
++                continue;
++            }
++            bool const isPatch = id == mConfig.imagePatchId;
++            int64_t const special = static_cast<int64_t>(id) - mConfig.vocabSize;
++            ELLM_CHECK(isPatch || special < mConfig.numSpecialTokens, "Molmo2 token id out of range");
++            if (isPatch && !mCopyRuns.empty() && mCopyRuns.back().fromPatch
++                && mCopyRuns.back().dstRow + mCopyRuns.back().numRows == blockRow)
++            {
++                ++mCopyRuns.back().numRows;
++            }
++            else
++            {
++                mCopyRuns.push_back(CopyRun{isPatch, isPatch ? patchRow : special, blockRow, 1});
++            }
++            patchRow += isPatch ? 1 : 0;
++            ++blockRow;
++            id = mConfig.imageTokenId;
++        }
++        ELLM_CHECK(patchRow == mNumPatches,
++            "Molmo2: <im_patch> count " + std::to_string(patchRow) + " != pooled patches " + std::to_string(mNumPatches));
++        mNumBlockTokens = blockRow;
++        check::check(mOutputEmbedding.reshape({mNumBlockTokens, mConfig.hiddenSize}), "reshape failed");
++        mLastMediaTokenLengths = {mNumBlockTokens};
++        mMultimodalMetrics.recordRun(1, mNumBlockTokens);
++
++        if (!imageOnly)
++        {
++            batchedInputIds.emplace_back(std::move(ids));
++        }
++    }
++    catch (std::exception const& e)
++    {
++        bool const actionable = isCallerActionable(e);
++        if (!actionable)
++        {
++            LOG_ERROR("Molmo2ViTRunner::preprocess failed: %s", e.what());
++        }
++        cudaStreamSynchronize(stream);
++        if (actionable)
++        {
++            throw;
++        }
++        return false;
++    }
++    return true;
++}
++
++bool Molmo2ViTRunner::infer(cudaStream_t stream) noexcept
++{
++    if (mNumBlockTokens == 0)
++    {
++        return true;
++    }
++    {
++        TIME_STAGE(metrics::StageNames::kMULTIMODAL_PROCESSING, stream);
++        bool ok = mVisualContext->setInputShape(kImagesName, mImages.getShape().getTRTDims());
++        ok &= mVisualContext->setInputShape(kPooledIdxName, mPooledIdx.getShape().getTRTDims());
++        if (!ok || !mVisualContext->enqueueV3(stream))
++        {
++            LOG_ERROR("Molmo2 visual engine enqueue failed");
++            return false;
++        }
++
++        size_t const rowBytes = static_cast<size_t>(mConfig.hiddenSize) * sizeof(half);
++        auto* dst = static_cast<char*>(mOutputEmbedding.rawPointer());
++        auto const* patch = static_cast<char const*>(mPatchEmbeds.rawPointer());
++        auto const* special = static_cast<char const*>(mSpecialEmbedding.rawPointer());
++        for (auto const& run : mCopyRuns)
++        {
++            char const* src = (run.fromPatch ? patch : special) + run.srcRow * rowBytes;
++            if (cudaMemcpyAsync(dst + run.dstRow * rowBytes, src, run.numRows * rowBytes, cudaMemcpyDeviceToDevice,
++                    stream)
++                != cudaSuccess)
++            {
++                LOG_ERROR("Molmo2 image-block assembly copy failed");
++                return false;
++            }
++        }
++    }
++    return true;
++}
++
++} // namespace rt
++} // namespace trt_edgellm
+diff --git a/cpp/multimodal/molmo2/molmo2ViTRunner.h b/cpp/multimodal/molmo2/molmo2ViTRunner.h
+new file mode 100644
+index 0000000..1c0efe1
+--- /dev/null
++++ b/cpp/multimodal/molmo2/molmo2ViTRunner.h
+@@ -0,0 +1,97 @@
++/*
++ * SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
++ * SPDX-License-Identifier: Apache-2.0
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ * http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++#pragma once
++
++#include "multimodal/common/multimodalRunner.h"
++#include <cstdint>
++#include <string>
++#include <vector>
++
++namespace trt_edgellm
++{
++namespace rt
++{
++
++//! \brief Configuration for the Molmo2 vision encoder (SigLIP2 + 2x2 attention pooling + projector)
++struct Molmo2ViTConfig
++{
++    int32_t vocabSize{0};       //!< LLM text vocabulary; ids at or above it index the special embedding table
++    int64_t hiddenSize{0};      //!< LLM hidden size
++    int32_t imagePatchId{0};    //!< <im_patch> id; these positions take the next visual engine output row
++    int32_t imageTokenId{0};    //!< Placeholder id written to the LLM input for every image-block position
++    int64_t patchesPerCrop{0};  //!< ViT patches per crop (27 x 27)
++    int64_t pixelsPerPatch{0};  //!< 14 x 14 x 3
++    int64_t maxNumCrops{0};     //!< From the engine profile
++    int64_t maxNumPatches{0};   //!< Pooled tokens, from the engine profile
++    int64_t numSpecialTokens{0};
++    std::string inputSuffix{".molmo2.bin"};
++};
++
++//! \brief Runner for Molmo2.
++//!
++//! Image preprocessing (crop split, patchify, pooling indices) and tokenization come from a per-request sidecar
++//! written with the HF processor: <image path stem><inputSuffix> holding input_ids, pixel_values and
++//! image_token_pooling. All image-block tokens (start/end/col/low-res-start and patches) lie outside the LLM text
++//! vocabulary, so every one of them is emitted as imageTokenId and its embedding row is assembled here: visual
++//! features for <im_patch>, rows of the Molmo2 special-token table otherwise.
++class Molmo2ViTRunner : public MultimodalRunner
++{
++public:
++    Molmo2ViTRunner(std::string const& engineDir, cudaStream_t stream);
++
++    ~Molmo2ViTRunner() noexcept = default;
++
++    bool preprocess(rt::LLMGenerationRequest const& request, std::vector<std::vector<int32_t>>& batchedInputIds,
++        tokenizer::Tokenizer const* tokenizer, [[maybe_unused]] rt::OptionalOutputTensor mropeCosSinOut,
++        cudaStream_t stream, bool imageOnly = false, bool skipEncoderWork = false) override;
++
++    bool infer(cudaStream_t stream) noexcept override;
++
++    bool validateAndFillConfig(std::string const& engineDir) override;
++
++    bool allocateBuffer(cudaStream_t stream) override;
++
++private:
++    //! Row source for one contiguous run of image-block positions in the output embedding.
++    struct CopyRun
++    {
++        bool fromPatch{false}; //!< true: rows of mPatchEmbeds, false: one row of mSpecialEmbedding
++        int64_t srcRow{0};
++        int64_t dstRow{0};
++        int64_t numRows{0};
++    };
++
++    //! \throws std::runtime_error on a malformed or missing sidecar
++    void loadSidecar(std::string const& path, std::vector<int32_t>& inputIds, cudaStream_t stream);
++
++    Molmo2ViTConfig mConfig;
++    std::string mEngineDir;
++    rt::Tensor mImages{};           //!< [1, T, patchesPerCrop, pixelsPerPatch] HALF
++    rt::Tensor mPooledIdx{};        //!< [1, P, 4] INT64
++    rt::Tensor mPatchEmbeds{};      //!< [P, hidden] HALF
++    rt::Tensor mImagesHost{};       //!< Pinned staging for mImages
++    rt::Tensor mPooledIdxHost{};    //!< Pinned staging for mPooledIdx
++    rt::Tensor mSpecialEmbedding{}; //!< [numSpecialTokens, hidden] HALF
++    std::vector<CopyRun> mCopyRuns;
++    int64_t mNumCrops{0};
++    int64_t mNumPatches{0};
++    int64_t mNumBlockTokens{0};
++};
++
++} // namespace rt
++} // namespace trt_edgellm
+-- 
+2.43.0
+

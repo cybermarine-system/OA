@@ -1,0 +1,6 @@
+{
+ "base": "/home/user/ondeviceAI/edgellm_check/hf_cache/hub/models--Qwen--Qwen3-VL-4B-Instruct/snapshots/ebb281ec70b05090aa6165b016eac8ec08e71b17",
+ "adapter": "/home/user/ondeviceAI/lora/runs/qwen3vl4b_r16/adapter",
+ "scale": 2.0,
+ "merged_tensors": 252
+}

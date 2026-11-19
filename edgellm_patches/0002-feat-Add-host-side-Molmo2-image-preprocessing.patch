@@ -1,0 +1,679 @@
+From aa0075ec16ee9e45ce0d9596dc874dca8ca0f990 Mon Sep 17 00:00:00 2001
+Date: Thu, 22 Oct 2026 22:16:26 +0900
+Subject: [PATCH 2/3] feat: Add host-side Molmo2 image preprocessing
+
+Port the HF Molmo2 processor (overlapping crop tiling, bilinear resize,
+patchify, 2x2 pooling indices, image token layout, BOS insertion) so the
+runner works from the chat-template prompt and the decoded image. The
+HF sidecar input remains available as preprocess=sidecar, and
+preprocess=cpp_verify compares both paths.
+
+---
+ cpp/multimodal/molmo2/molmo2Preprocess.cpp | 314 +++++++++++++++++++++
+ cpp/multimodal/molmo2/molmo2Preprocess.h   |  76 +++++
+ cpp/multimodal/molmo2/molmo2ViTRunner.cpp  | 130 +++++++--
+ cpp/multimodal/molmo2/molmo2ViTRunner.h    |  32 ++-
+ 4 files changed, 527 insertions(+), 25 deletions(-)
+ create mode 100644 cpp/multimodal/molmo2/molmo2Preprocess.cpp
+ create mode 100644 cpp/multimodal/molmo2/molmo2Preprocess.h
+
+diff --git a/cpp/multimodal/molmo2/molmo2Preprocess.cpp b/cpp/multimodal/molmo2/molmo2Preprocess.cpp
+new file mode 100644
+index 0000000..d247c45
+--- /dev/null
++++ b/cpp/multimodal/molmo2/molmo2Preprocess.cpp
+@@ -0,0 +1,314 @@
++/*
++ * SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
++ * SPDX-License-Identifier: Apache-2.0
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ * http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++#include "multimodal/molmo2/molmo2Preprocess.h"
++#include "common/checkMacros.h"
++#include <algorithm>
++#include <cmath>
++#include <limits>
++#include <tuple>
++
++namespace trt_edgellm
++{
++namespace rt
++{
++namespace molmo2
++{
++
++namespace
++{
++
++struct AxisTaps
++{
++    std::vector<int64_t> i0;
++    std::vector<int64_t> i1;
++    std::vector<float> frac;
++};
++
++// PyTorch upsample_bilinear2d source index with align_corners=false, computed in float32.
++AxisTaps computeTaps(int64_t inSize, int64_t outSize)
++{
++    AxisTaps taps;
++    taps.i0.resize(outSize);
++    taps.i1.resize(outSize);
++    taps.frac.resize(outSize);
++    float const scale = static_cast<float>(inSize) / static_cast<float>(outSize);
++    for (int64_t o = 0; o < outSize; ++o)
++    {
++        float const src = std::max((static_cast<float>(o) + 0.5F) * scale - 0.5F, 0.0F);
++        int64_t const x0 = std::min(static_cast<int64_t>(src), inSize - 1);
++        taps.i0[o] = x0;
++        taps.i1[o] = std::min(x0 + 1, inSize - 1);
++        taps.frac[o] = src - static_cast<float>(x0);
++    }
++    return taps;
++}
++
++//! idx [h, w] -> [ceil(h/ph) * ceil(w/pw), ph*pw], padded with -1 split as (pad/2, pad - pad/2).
++std::vector<int64_t> arangeForPooling(
++    std::vector<int64_t> const& idx, int64_t h, int64_t w, int64_t ph, int64_t pw, int64_t& outH, int64_t& outW)
++{
++    int64_t const hPad = ph * ((h + ph - 1) / ph) - h;
++    int64_t const wPad = pw * ((w + pw - 1) / pw) - w;
++    int64_t const top = hPad / 2;
++    int64_t const left = wPad / 2;
++    outH = (h + hPad) / ph;
++    outW = (w + wPad) / pw;
++    std::vector<int64_t> out(outH * outW * ph * pw, -1);
++    for (int64_t oy = 0; oy < outH; ++oy)
++    {
++        for (int64_t ox = 0; ox < outW; ++ox)
++        {
++            for (int64_t dy = 0; dy < ph; ++dy)
++            {
++                for (int64_t dx = 0; dx < pw; ++dx)
++                {
++                    int64_t const y = oy * ph + dy - top;
++                    int64_t const x = ox * pw + dx - left;
++                    if (y >= 0 && y < h && x >= 0 && x < w)
++                    {
++                        out[((oy * outW + ox) * ph + dy) * pw + dx] = idx[y * w + x];
++                    }
++                }
++            }
++        }
++    }
++    return out;
++}
++
++//! Normalize a cropSize x cropSize window of `img` (packed HWC uint8, row stride imgW) into patch-major half crop.
++void writeCrop(std::vector<uint8_t> const& img, int64_t imgW, int64_t y0, int64_t x0, PreprocessConfig const& cfg,
++    half* dst)
++{
++    int64_t const patchesPerSide = cfg.cropSize / cfg.patchSize;
++    std::array<float, 3> scale{};
++    std::array<float, 3> shift{};
++    for (int c = 0; c < 3; ++c)
++    {
++        scale[c] = 1.0F / cfg.std[c];
++        shift[c] = cfg.mean[c];
++    }
++    for (int64_t py = 0; py < patchesPerSide; ++py)
++    {
++        for (int64_t px = 0; px < patchesPerSide; ++px)
++        {
++            half* patch = dst + (py * patchesPerSide + px) * cfg.patchSize * cfg.patchSize * 3;
++            for (int64_t dy = 0; dy < cfg.patchSize; ++dy)
++            {
++                uint8_t const* row = img.data() + ((y0 + py * cfg.patchSize + dy) * imgW + x0 + px * cfg.patchSize) * 3;
++                for (int64_t dx = 0; dx < cfg.patchSize; ++dx)
++                {
++                    for (int c = 0; c < 3; ++c)
++                    {
++                        float const v = static_cast<float>(row[dx * 3 + c]) / 255.0F;
++                        *patch++ = __float2half((v - shift[c]) * scale[c]);
++                    }
++                }
++            }
++        }
++    }
++}
++
++} // namespace
++
++std::pair<int64_t, int64_t> selectTiling(int64_t h, int64_t w, int64_t windowSize, int64_t maxCrops)
++{
++    std::vector<std::pair<int64_t, int64_t>> tilings;
++    for (int64_t i = 1; i <= maxCrops; ++i)
++    {
++        for (int64_t j = 1; j <= maxCrops; ++j)
++        {
++            if (i * j <= maxCrops)
++            {
++                tilings.emplace_back(i, j);
++            }
++        }
++    }
++    std::stable_sort(tilings.begin(), tilings.end(), [](auto const& a, auto const& b) {
++        return std::make_tuple(a.first * a.second, a.first) < std::make_tuple(b.first * b.second, b.first);
++    });
++
++    // IEEE division keeps the HF behaviour for non-positive sizes (inf/negative scales).
++    float const hf = static_cast<float>(h);
++    float const wf = static_cast<float>(w);
++    std::vector<float> required(tilings.size());
++    bool allDownscale = true;
++    for (size_t k = 0; k < tilings.size(); ++k)
++    {
++        float const sh = static_cast<float>(tilings[k].first * windowSize) / hf;
++        float const sw = static_cast<float>(tilings[k].second * windowSize) / wf;
++        required[k] = std::min(sh, sw);
++        allDownscale &= required[k] < 1.0F;
++    }
++    size_t best = 0;
++    if (allDownscale)
++    {
++        for (size_t k = 1; k < required.size(); ++k)
++        {
++            if (required[k] > required[best])
++            {
++                best = k;
++            }
++        }
++    }
++    else
++    {
++        for (auto& r : required)
++        {
++            r = r < 1.0F ? 10e9F : r;
++        }
++        for (size_t k = 1; k < required.size(); ++k)
++        {
++            if (required[k] < required[best])
++            {
++                best = k;
++            }
++        }
++    }
++    return tilings[best];
++}
++
++std::vector<uint8_t> resizeBilinearRgb(uint8_t const* src, int64_t h, int64_t w, int64_t outH, int64_t outW)
++{
++    AxisTaps const ty = computeTaps(h, outH);
++    AxisTaps const tx = computeTaps(w, outW);
++    std::vector<uint8_t> out(outH * outW * 3);
++    for (int64_t y = 0; y < outH; ++y)
++    {
++        uint8_t const* r0 = src + ty.i0[y] * w * 3;
++        uint8_t const* r1 = src + ty.i1[y] * w * 3;
++        float const ly = ty.frac[y];
++        for (int64_t x = 0; x < outW; ++x)
++        {
++            float const lx = tx.frac[x];
++            int64_t const a = tx.i0[x] * 3;
++            int64_t const b = tx.i1[x] * 3;
++            for (int c = 0; c < 3; ++c)
++            {
++                float const top = static_cast<float>(r0[a + c]) * (1.0F - lx) + static_cast<float>(r0[b + c]) * lx;
++                float const bot = static_cast<float>(r1[a + c]) * (1.0F - lx) + static_cast<float>(r1[b + c]) * lx;
++                float const v = std::nearbyint(top * (1.0F - ly) + bot * ly);
++                out[(y * outW + x) * 3 + c] = static_cast<uint8_t>(std::clamp(v, 0.0F, 255.0F));
++            }
++        }
++    }
++    return out;
++}
++
++PreprocessedImage preprocessImage(uint8_t const* rgb, int64_t h, int64_t w, PreprocessConfig const& cfg)
++{
++    ELLM_CHECK(cfg.cropSize % cfg.patchSize == 0, "Molmo2 crop size must be a multiple of the patch size");
++    int64_t const cropPatches = cfg.cropSize / cfg.patchSize;
++    int64_t const patchesPerCrop = cropPatches * cropPatches;
++    int64_t const pixelsPerCrop = patchesPerCrop * cfg.patchSize * cfg.patchSize * 3;
++    int64_t const marginPatches = cfg.overlapLeft + cfg.overlapRight;
++    int64_t const totalMarginPixels = cfg.patchSize * marginPatches;
++    int64_t const windowPatches = cropPatches - marginPatches;
++    int64_t const windowSize = windowPatches * cfg.patchSize;
++
++    auto const [tilesY, tilesX]
++        = selectTiling(h - totalMarginPixels, w - totalMarginPixels, windowSize, cfg.maxCrops);
++    int64_t const srcH = tilesY * windowSize + totalMarginPixels;
++    int64_t const srcW = tilesX * windowSize + totalMarginPixels;
++    std::vector<uint8_t> const src = resizeBilinearRgb(rgb, h, w, srcH, srcW);
++
++    PreprocessedImage out;
++    out.numCrops = 1 + tilesY * tilesX;
++    out.pixels.resize(out.numCrops * pixelsPerCrop);
++
++    std::vector<uint8_t> const global = resizeBilinearRgb(rgb, h, w, cfg.cropSize, cfg.cropSize);
++    writeCrop(global, cfg.cropSize, 0, 0, cfg, out.pixels.data());
++
++    // Patch index map over the resized source in raster order, dropping overlap margins; indices count crops
++    // after the global view.
++    int64_t const srcPatchesH = srcH / cfg.patchSize;
++    int64_t const srcPatchesW = srcW / cfg.patchSize;
++    std::vector<int64_t> patchIdx;
++    patchIdx.reserve(srcPatchesH * srcPatchesW);
++    for (int64_t i = 0; i < tilesY; ++i)
++    {
++        for (int64_t r = 0; r < cropPatches; ++r)
++        {
++            bool const rowMasked = (i != 0 && r < cfg.overlapLeft) || (i != tilesY - 1 && r >= cropPatches - cfg.overlapRight);
++            for (int64_t j = 0; j < tilesX; ++j)
++            {
++                int64_t const crop = i * tilesX + j;
++                for (int64_t q = 0; q < cropPatches; ++q)
++                {
++                    bool const colMasked
++                        = (j != 0 && q < cfg.overlapLeft) || (j != tilesX - 1 && q >= cropPatches - cfg.overlapRight);
++                    if (!rowMasked && !colMasked)
++                    {
++                        patchIdx.push_back(crop * patchesPerCrop + r * cropPatches + q + patchesPerCrop);
++                    }
++                }
++            }
++        }
++    }
++    ELLM_CHECK(static_cast<int64_t>(patchIdx.size()) == srcPatchesH * srcPatchesW,
++        "Molmo2 overlap-crop patch map size mismatch");
++    for (int64_t i = 0; i < tilesY; ++i)
++    {
++        for (int64_t j = 0; j < tilesX; ++j)
++        {
++            writeCrop(src, srcW, i * windowSize, j * windowSize, cfg,
++                out.pixels.data() + (1 + i * tilesX + j) * pixelsPerCrop);
++        }
++    }
++
++    std::vector<int64_t> globalIdx(patchesPerCrop);
++    for (int64_t k = 0; k < patchesPerCrop; ++k)
++    {
++        globalIdx[k] = k;
++    }
++    int64_t resizedH = 0;
++    int64_t resizedW = 0;
++    int64_t poolH = 0;
++    int64_t poolW = 0;
++    out.pooledIdx = arangeForPooling(globalIdx, cropPatches, cropPatches, cfg.poolH, cfg.poolW, resizedH, resizedW);
++    std::vector<int64_t> const cropPool
++        = arangeForPooling(patchIdx, srcPatchesH, srcPatchesW, cfg.poolH, cfg.poolW, poolH, poolW);
++    out.pooledIdx.insert(out.pooledIdx.end(), cropPool.begin(), cropPool.end());
++    out.grid = {resizedH, resizedW, poolH, poolW};
++
++    auto& tok = out.imageTokens;
++    tok.push_back(cfg.useSingleCropStartToken ? cfg.lowResImStartId : cfg.imStartId);
++    for (int64_t y = 0; y < resizedH; ++y)
++    {
++        tok.insert(tok.end(), resizedW, cfg.imPatchId);
++        if (cfg.useSingleCropColTokens)
++        {
++            tok.push_back(cfg.imColId);
++        }
++    }
++    tok.push_back(cfg.imEndId);
++    tok.push_back(cfg.imStartId);
++    for (int64_t y = 0; y < poolH; ++y)
++    {
++        tok.insert(tok.end(), poolW, cfg.imPatchId);
++        if (cfg.useColTokens)
++        {
++            tok.push_back(cfg.imColId);
++        }
++    }
++    tok.push_back(cfg.imEndId);
++    return out;
++}
++
++} // namespace molmo2
++} // namespace rt
++} // namespace trt_edgellm
+diff --git a/cpp/multimodal/molmo2/molmo2Preprocess.h b/cpp/multimodal/molmo2/molmo2Preprocess.h
+new file mode 100644
+index 0000000..a96e833
+--- /dev/null
++++ b/cpp/multimodal/molmo2/molmo2Preprocess.h
+@@ -0,0 +1,76 @@
++/*
++ * SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
++ * SPDX-License-Identifier: Apache-2.0
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ * http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++#pragma once
++
++#include <array>
++#include <cstdint>
++#include <cuda_fp16.h>
++#include <utility>
++#include <vector>
++
++namespace trt_edgellm
++{
++namespace rt
++{
++namespace molmo2
++{
++
++//! Host-side Molmo2 image preprocessing parameters (HF Molmo2ImageProcessor / Molmo2Processor defaults).
++struct PreprocessConfig
++{
++    int64_t cropSize{378};
++    int64_t patchSize{14};
++    int64_t maxCrops{8};
++    int64_t overlapLeft{4};
++    int64_t overlapRight{4};
++    int64_t poolH{2};
++    int64_t poolW{2};
++    std::array<float, 3> mean{{0.5F, 0.5F, 0.5F}};
++    std::array<float, 3> std{{0.5F, 0.5F, 0.5F}};
++    bool useColTokens{true};
++    bool useSingleCropColTokens{false};
++    bool useSingleCropStartToken{true};
++    int32_t imStartId{151936};
++    int32_t imEndId{151937};
++    int32_t imPatchId{151938};
++    int32_t imColId{151939};
++    int32_t lowResImStartId{151940};
++};
++
++//! Preprocessed single image. Crop 0 is the global (low-res) view.
++struct PreprocessedImage
++{
++    int64_t numCrops{0};
++    std::vector<half> pixels;          //!< [numCrops, (cropSize/patch)^2, patch*patch*3], patch-major (dy, dx, c)
++    std::vector<int64_t> pooledIdx;    //!< [numPooled, poolH*poolW], -1 = padding
++    std::array<int64_t, 4> grid{};     //!< resized_h, resized_w, h, w after pooling
++    std::vector<int32_t> imageTokens;  //!< Token sequence that replaces one <|image|> placeholder
++};
++
++//! Overlapping-crop tiling choice; mirrors HF select_tiling (float32 arithmetic, smaller tilings win ties).
++std::pair<int64_t, int64_t> selectTiling(int64_t h, int64_t w, int64_t windowSize, int64_t maxCrops);
++
++//! Bilinear resize (align_corners=false, no antialias) of packed HWC uint8 RGB, rounded back to uint8.
++std::vector<uint8_t> resizeBilinearRgb(uint8_t const* src, int64_t h, int64_t w, int64_t outH, int64_t outW);
++
++//! Full Molmo2 image preprocessing of a packed HWC uint8 RGB image.
++PreprocessedImage preprocessImage(uint8_t const* rgb, int64_t h, int64_t w, PreprocessConfig const& cfg);
++
++} // namespace molmo2
++} // namespace rt
++} // namespace trt_edgellm
+diff --git a/cpp/multimodal/molmo2/molmo2ViTRunner.cpp b/cpp/multimodal/molmo2/molmo2ViTRunner.cpp
+index aa6ec06..097797d 100644
+--- a/cpp/multimodal/molmo2/molmo2ViTRunner.cpp
++++ b/cpp/multimodal/molmo2/molmo2ViTRunner.cpp
+@@ -20,7 +20,9 @@
+ #include "common/safetensorsUtils.h"
+ #include "profiling/metrics.h"
+ #include "profiling/timer.h"
++#include <algorithm>
+ #include <array>
++#include <cmath>
+ #include <cstring>
+ #include <filesystem>
+ #include <fstream>
+@@ -142,6 +144,28 @@ bool Molmo2ViTRunner::validateAndFillConfig(std::string const& engineDir)
+     mConfig.imagePatchId = jsonConfig["image_patch_id"].get<int32_t>();
+     mConfig.imageTokenId = jsonConfig.value("image_token_id", mConfig.imagePatchId);
+     mConfig.inputSuffix = jsonConfig.value("preprocessed_input_suffix", mConfig.inputSuffix);
++    mConfig.imagePromptId = jsonConfig.value("image_prompt_id", mConfig.imagePromptId);
++    mConfig.bosTokenId = jsonConfig.value("bos_token_id", mConfig.bosTokenId);
++    std::string const preprocessMode = jsonConfig.value("preprocess", std::string{"cpp"});
++    ELLM_CHECK(preprocessMode == "cpp" || preprocessMode == "sidecar" || preprocessMode == "cpp_verify",
++        "Molmo2 preprocess must be cpp, sidecar or cpp_verify");
++    mConfig.useSidecar = preprocessMode == "sidecar";
++    mConfig.verifySidecar = preprocessMode == "cpp_verify";
++    auto& pre = mConfig.pre;
++    pre.cropSize = jsonConfig.value("crop_size", pre.cropSize);
++    pre.patchSize = jsonConfig.value("patch_size", pre.patchSize);
++    pre.maxCrops = jsonConfig.value("max_crops", pre.maxCrops);
++    if (jsonConfig.contains("overlap_margins"))
++    {
++        pre.overlapLeft = jsonConfig["overlap_margins"][0].get<int64_t>();
++        pre.overlapRight = jsonConfig["overlap_margins"][1].get<int64_t>();
++    }
++    if (jsonConfig.contains("pooling_size"))
++    {
++        pre.poolH = jsonConfig["pooling_size"][0].get<int64_t>();
++        pre.poolW = jsonConfig["pooling_size"][1].get<int64_t>();
++    }
++    pre.imPatchId = mConfig.imagePatchId;
+ 
+     nvinfer1::Dims const imagesMax
+         = mVisualEngine->getProfileShape(kImagesName, 0, nvinfer1::OptProfileSelector::kMAX);
+@@ -206,7 +230,7 @@ bool Molmo2ViTRunner::allocateBuffer(cudaStream_t stream)
+     return true;
+ }
+ 
+-void Molmo2ViTRunner::loadSidecar(std::string const& path, std::vector<int32_t>& inputIds, cudaStream_t stream)
++Molmo2ViTRunner::PreparedInput Molmo2ViTRunner::loadSidecar(std::string const& path) const
+ {
+     std::ifstream in(path, std::ios::binary);
+     ELLM_CHECK(in.is_open(), "Molmo2 preprocessed input not found: " + path);
+@@ -217,39 +241,90 @@ void Molmo2ViTRunner::loadSidecar(std::string const& path, std::vector<int32_t>&
+     uint32_t const numArrays = readPod<uint32_t>(in);
+     ELLM_CHECK(version == 1 && numArrays == 3, "Unsupported Molmo2 sidecar version/layout: " + path);
+ 
++    PreparedInput input;
+     SidecarArray const ids = readArrayHeader(in);
+     ELLM_CHECK(ids.dtype == SidecarDtype::kINT32 && ids.dims.size() == 1, "Molmo2 sidecar: input_ids must be int32 [L]");
+-    inputIds.resize(ids.dims[0]);
+-    in.read(reinterpret_cast<char*>(inputIds.data()), ids.numBytes);
++    input.inputIds.resize(ids.dims[0]);
++    in.read(reinterpret_cast<char*>(input.inputIds.data()), ids.numBytes);
+ 
+     SidecarArray const pix = readArrayHeader(in);
+     ELLM_CHECK(pix.dtype == SidecarDtype::kHALF && pix.dims.size() == 3 && pix.dims[1] == mConfig.patchesPerCrop
+             && pix.dims[2] == mConfig.pixelsPerPatch,
+         "Molmo2 sidecar: pixel_values must be fp16 [T, patchesPerCrop, pixelsPerPatch]");
+-    mNumCrops = pix.dims[0];
+-    ELLM_CHECK(mNumCrops >= 1 && mNumCrops <= mConfig.maxNumCrops,
+-        "Molmo2 crop count " + std::to_string(mNumCrops) + " outside engine profile");
+-    in.read(static_cast<char*>(mImagesHost.rawPointer()), pix.numBytes);
++    input.numCrops = pix.dims[0];
++    input.pixels.resize(pix.numBytes / sizeof(half));
++    in.read(reinterpret_cast<char*>(input.pixels.data()), pix.numBytes);
+ 
+     SidecarArray const pool = readArrayHeader(in);
+     ELLM_CHECK(pool.dtype == SidecarDtype::kINT64 && pool.dims.size() == 2 && pool.dims[1] == 4,
+         "Molmo2 sidecar: image_token_pooling must be int64 [P, 4]");
+-    mNumPatches = pool.dims[0];
++    input.pooledIdx.resize(pool.dims[0] * 4);
++    in.read(reinterpret_cast<char*>(input.pooledIdx.data()), pool.numBytes);
++    ELLM_CHECK(in.good(), "Molmo2 sidecar truncated: " + path);
++    return input;
++}
++
++Molmo2ViTRunner::PreparedInput Molmo2ViTRunner::prepareInput(
++    rt::LLMGenerationRequest const& request, tokenizer::Tokenizer const* tokenizer) const
++{
++    auto const& image = request.requests[0].imageBuffers[0];
++    ELLM_CHECK(image.data() != nullptr && image.frames == 1 && image.channels == 3,
++        "Molmo2ViTRunner needs a single host RGB frame");
++    molmo2::PreprocessedImage pre = molmo2::preprocessImage(image.data(), image.height, image.width, mConfig.pre);
++
++    std::vector<int32_t> const textIds = tokenizer->encode(request.formattedRequests[0].formattedCompleteRequest);
++    PreparedInput input;
++    if (textIds.empty() || textIds.front() != mConfig.bosTokenId)
++    {
++        input.inputIds.push_back(mConfig.bosTokenId);
++    }
++    int64_t numPrompts = 0;
++    for (int32_t const id : textIds)
++    {
++        if (id == mConfig.imagePromptId)
++        {
++            input.inputIds.insert(input.inputIds.end(), pre.imageTokens.begin(), pre.imageTokens.end());
++            ++numPrompts;
++        }
++        else
++        {
++            input.inputIds.push_back(id);
++        }
++    }
++    ELLM_CHECK(numPrompts == 1,
++        "EDGELLM_BAD_MEDIA_COUNT: Molmo2 expects exactly one <|image|> in the formatted prompt, got "
++            + std::to_string(numPrompts));
++    input.numCrops = pre.numCrops;
++    input.pixels = std::move(pre.pixels);
++    input.pooledIdx = std::move(pre.pooledIdx);
++    return input;
++}
++
++void Molmo2ViTRunner::uploadInput(PreparedInput const& input, cudaStream_t stream)
++{
++    mNumCrops = input.numCrops;
++    mNumPatches = static_cast<int64_t>(input.pooledIdx.size()) / 4;
++    ELLM_CHECK(mNumCrops >= 1 && mNumCrops <= mConfig.maxNumCrops,
++        "Molmo2 crop count " + std::to_string(mNumCrops) + " outside engine profile");
+     ELLM_CHECK(mNumPatches >= 1 && mNumPatches <= mConfig.maxNumPatches,
+         "Molmo2 pooled patch count " + std::to_string(mNumPatches) + " outside engine profile");
+-    in.read(static_cast<char*>(mPooledIdxHost.rawPointer()), pool.numBytes);
+-    ELLM_CHECK(in.good(), "Molmo2 sidecar truncated: " + path);
++    size_t const pixelBytes = input.pixels.size() * sizeof(half);
++    size_t const idxBytes = input.pooledIdx.size() * sizeof(int64_t);
++    ELLM_CHECK(static_cast<int64_t>(input.pixels.size()) == mNumCrops * mConfig.patchesPerCrop * mConfig.pixelsPerPatch,
++        "Molmo2 pixel buffer size mismatch");
++    std::memcpy(mImagesHost.rawPointer(), input.pixels.data(), pixelBytes);
++    std::memcpy(mPooledIdxHost.rawPointer(), input.pooledIdx.data(), idxBytes);
+ 
+     check::check(mImages.reshape({1, mNumCrops, mConfig.patchesPerCrop, mConfig.pixelsPerPatch}), "reshape failed");
+     check::check(mPooledIdx.reshape({1, mNumPatches, 4}), "reshape failed");
+     check::check(mPatchEmbeds.reshape({mNumPatches, mConfig.hiddenSize}), "reshape failed");
+-    CUDA_CHECK(cudaMemcpyAsync(mImages.rawPointer(), mImagesHost.rawPointer(), pix.numBytes, cudaMemcpyHostToDevice, stream));
+-    CUDA_CHECK(cudaMemcpyAsync(
+-        mPooledIdx.rawPointer(), mPooledIdxHost.rawPointer(), pool.numBytes, cudaMemcpyHostToDevice, stream));
++    CUDA_CHECK(cudaMemcpyAsync(mImages.rawPointer(), mImagesHost.rawPointer(), pixelBytes, cudaMemcpyHostToDevice, stream));
++    CUDA_CHECK(
++        cudaMemcpyAsync(mPooledIdx.rawPointer(), mPooledIdxHost.rawPointer(), idxBytes, cudaMemcpyHostToDevice, stream));
+ }
+ 
+ bool Molmo2ViTRunner::preprocess(rt::LLMGenerationRequest const& request,
+-    std::vector<std::vector<int32_t>>& batchedInputIds, [[maybe_unused]] tokenizer::Tokenizer const* tokenizer,
++    std::vector<std::vector<int32_t>>& batchedInputIds, tokenizer::Tokenizer const* tokenizer,
+     [[maybe_unused]] rt::OptionalOutputTensor mropeCosSinOut, cudaStream_t stream, bool imageOnly,
+     [[maybe_unused]] bool skipEncoderWork)
+ {
+@@ -258,13 +333,30 @@ bool Molmo2ViTRunner::preprocess(rt::LLMGenerationRequest const& request,
+         ELLM_CHECK(request.requests.size() == 1, "Molmo2ViTRunner supports batch size 1");
+         auto const& req = request.requests[0];
+         ELLM_CHECK(req.imageBuffers.size() == 1, "EDGELLM_BAD_MEDIA_COUNT: Molmo2ViTRunner expects one image");
+-        std::string const imagePath = findImagePath(req);
+-        ELLM_CHECK(!imagePath.empty(), "Molmo2ViTRunner: request has no image path");
+-        std::filesystem::path sidecar(imagePath);
++        std::filesystem::path sidecar(findImagePath(req));
+         sidecar.replace_extension(mConfig.inputSuffix);
+ 
+-        std::vector<int32_t> ids;
+-        loadSidecar(sidecar.string(), ids, stream);
++        PreparedInput input = mConfig.useSidecar ? loadSidecar(sidecar.string()) : prepareInput(request, tokenizer);
++        if (mConfig.verifySidecar && std::filesystem::exists(sidecar))
++        {
++            PreparedInput const ref = loadSidecar(sidecar.string());
++            float maxPixelDiff = 0.0F;
++            int64_t numPixelDiff = 0;
++            bool const sameShape = ref.pixels.size() == input.pixels.size();
++            for (size_t k = 0; sameShape && k < ref.pixels.size(); ++k)
++            {
++                float const d = std::abs(__half2float(ref.pixels[k]) - __half2float(input.pixels[k]));
++                maxPixelDiff = std::max(maxPixelDiff, d);
++                numPixelDiff += d > 0.0F ? 1 : 0;
++            }
++            LOG_INFO("Molmo2 verify %s: ids %s (%zu vs %zu), pooling %s, crops %ld vs %ld, pixels %s max|diff| %.4f "
++                     "(%ld differ)",
++                sidecar.filename().c_str(), ref.inputIds == input.inputIds ? "MATCH" : "DIFF", input.inputIds.size(),
++                ref.inputIds.size(), ref.pooledIdx == input.pooledIdx ? "MATCH" : "DIFF", input.numCrops,
++                ref.numCrops, sameShape ? "same-shape" : "SHAPE-DIFF", maxPixelDiff, numPixelDiff);
++        }
++        uploadInput(input, stream);
++        std::vector<int32_t>& ids = input.inputIds;
+ 
+         // Build the row plan and rewrite every image-block id to the shared placeholder.
+         mCopyRuns.clear();
+diff --git a/cpp/multimodal/molmo2/molmo2ViTRunner.h b/cpp/multimodal/molmo2/molmo2ViTRunner.h
+index 1c0efe1..db330db 100644
+--- a/cpp/multimodal/molmo2/molmo2ViTRunner.h
++++ b/cpp/multimodal/molmo2/molmo2ViTRunner.h
+@@ -18,6 +18,7 @@
+ #pragma once
+ 
+ #include "multimodal/common/multimodalRunner.h"
++#include "multimodal/molmo2/molmo2Preprocess.h"
+ #include <cstdint>
+ #include <string>
+ #include <vector>
+@@ -39,16 +40,23 @@ struct Molmo2ViTConfig
+     int64_t maxNumCrops{0};     //!< From the engine profile
+     int64_t maxNumPatches{0};   //!< Pooled tokens, from the engine profile
+     int64_t numSpecialTokens{0};
++    int32_t imagePromptId{151941}; //!< <|image|> placeholder emitted by the chat template
++    int32_t bosTokenId{151645};    //!< Molmo2 inserts <|im_end|> as BOS when absent
++    bool useSidecar{false};        //!< Read HF-processor output instead of preprocessing in C++
++    bool verifySidecar{false};     //!< C++ preprocessing, compared against the sidecar when one exists
+     std::string inputSuffix{".molmo2.bin"};
++    molmo2::PreprocessConfig pre{};
+ };
+ 
+ //! \brief Runner for Molmo2.
+ //!
+-//! Image preprocessing (crop split, patchify, pooling indices) and tokenization come from a per-request sidecar
+-//! written with the HF processor: <image path stem><inputSuffix> holding input_ids, pixel_values and
+-//! image_token_pooling. All image-block tokens (start/end/col/low-res-start and patches) lie outside the LLM text
+-//! vocabulary, so every one of them is emitted as imageTokenId and its embedding row is assembled here: visual
+-//! features for <im_patch>, rows of the Molmo2 special-token table otherwise.
++//! Image preprocessing (overlapping crops, patchify, pooling indices) runs on the host and mirrors the HF
++//! Molmo2 processor. Optionally, inputs come from a per-request sidecar written with the HF processor:
++//! <image path stem><inputSuffix> holding input_ids, pixel_values and image_token_pooling.
++//!
++//! All image-block tokens (start/end/col/low-res-start and patches) lie outside the LLM text vocabulary, so every
++//! one of them is emitted as imageTokenId and its embedding row is assembled here: visual features for <im_patch>,
++//! rows of the Molmo2 special-token table otherwise.
+ class Molmo2ViTRunner : public MultimodalRunner
+ {
+ public:
+@@ -76,8 +84,20 @@ private:
+         int64_t numRows{0};
+     };
+ 
++    struct PreparedInput
++    {
++        std::vector<int32_t> inputIds;
++        int64_t numCrops{0};
++        std::vector<half> pixels;
++        std::vector<int64_t> pooledIdx; //!< [P, 4]
++    };
++
+     //! \throws std::runtime_error on a malformed or missing sidecar
+-    void loadSidecar(std::string const& path, std::vector<int32_t>& inputIds, cudaStream_t stream);
++    PreparedInput loadSidecar(std::string const& path) const;
++
++    PreparedInput prepareInput(rt::LLMGenerationRequest const& request, tokenizer::Tokenizer const* tokenizer) const;
++
++    void uploadInput(PreparedInput const& input, cudaStream_t stream);
+ 
+     Molmo2ViTConfig mConfig;
+     std::string mEngineDir;
+-- 
+2.43.0
+

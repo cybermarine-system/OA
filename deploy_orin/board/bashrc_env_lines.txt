@@ -1,0 +1,9 @@
+119:export EDGELLM_PLUGIN_PATH=$HOME/TensorRT-Edge-LLM/build/libNvInfer_edgellm_plugin.so
+120:export WORKSPACE_DIR=$HOME/tensorrt-edgellm-workspace
+121:export EDGELLM_PLUGIN_PATH=$HOME/TensorRT-Edge-LLM/build/libNvInfer_edgellm_plugin.so
+122:export WORKSPACE_DIR=$HOME/tensorrt-edgellm-workspace
+123:export M=$WORKSPACE_DIR/Qwen3-4B-AWQ
+125:export EDGELLM_ROOT=$HOME/TensorRT-Edge-LLM-1231d64/build
+126:export EDGELLM_BIN=$EDGELLM_ROOT/examples
+127:export EDGELLM_PLUGIN_PATH=$EDGELLM_ROOT/libNvInfer_edgellm_plugin.so
+128:export VB=$HOME/vrs_bundle

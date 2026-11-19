@@ -1,0 +1,46 @@
+From ca510ca3cd5c62469e40f6a2a1241a6be485888c Mon Sep 17 00:00:00 2001
+Date: Thu, 22 Oct 2026 22:33:38 +0900
+Subject: [PATCH 3/3] feat: Report per-request wall time in llm_inference
+ output
+
+---
+ examples/llm/llm_inference.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/examples/llm/llm_inference.cpp b/examples/llm/llm_inference.cpp
+index 3af86f5..8b338cd 100644
+--- a/examples/llm/llm_inference.cpp
++++ b/examples/llm/llm_inference.cpp
+@@ -1767,6 +1767,7 @@ int main(int argc, char* argv[])
+         }
+ 
+         bool requestStatus = false;
++        double requestWallMs = -1.0;
+         StreamingAudioWriter streamingWriter;
+ 
+         cudaEvent_t e2eStart{nullptr}, e2eEnd{nullptr}, ttfpaEvent{nullptr};
+@@ -1844,7 +1845,10 @@ int main(int argc, char* argv[])
+                 std::vector<int32_t> const requiredLayers = ttsRuntime->getThinkerHiddenLayerIndices();
+                 request.acceptHiddenLayer = (requiredLayers.size() >= 2) ? requiredLayers[1] : 14;
+             }
++            auto const requestStart = std::chrono::steady_clock::now();
+             requestStatus = runtime->handleRequest(request, response, stream, args.enableAudioOutput);
++            requestWallMs = std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - requestStart)
++                                .count();
+         }
+ 
+         // Qwen3-Omni audio generation: Code2Wav vocoding
+@@ -2060,6 +2064,10 @@ int main(int argc, char* argv[])
+             // If invalid UTF-8 detected, error message is returned and original text is logged
+             responseJson["output_text"] = sanitizeUtf8ForJson(outputText);
+             responseJson["request_idx"] = flatRequestIdx++;
++            if (requestWallMs >= 0.0)
++            {
++                responseJson["request_wall_ms"] = requestWallMs;
++            }
+             responseJson["batch_idx"] = batchIdx;
+             responseJson["finish_reason"] = (requestStatus && batchIdx < response.finishReasons.size())
+                 ? rt::finishReasonName(response.finishReasons[batchIdx])
+-- 
+2.43.0
+

@@ -1,0 +1,106 @@
+[15:42:35.740] [INFO] [trtUtils.h:71:loadEdgellmPluginLib] EDGELLM_PLUGIN_PATH: /home/user/TensorRT-Edge-LLM-1231d64/build/libNvInfer_edgellm_plugin.so
+[15:42:35.751] [WARNING] [version.cpp:79:checkVersion] Model does not have edgellm_version. Current runtime version: 0.11.0
+[15:42:35.751] [INFO] [visualBuilder.cpp:61:build] Using __LUNOWUD=-mlir:autotune:num_threads=1 -mlir:collective:fp4=off -cask_fusion:async_policy=1 -peep:fc_h_fusion=off
+[15:42:35.820] [INFO] [TensorRT] [MemUsageChange] Init CUDA: CPU +16, GPU +0, now: CPU 23, GPU 1723 (MiB)
+[15:42:36.263] [INFO] [TensorRT] ----------------------------------------------------------------
+[15:42:36.263] [INFO] [TensorRT] Input filename:   /home/user/vrs_bundle_v2/qwen3vl2b_r16_ep1_int4_v16k/visual/model.onnx
+[15:42:36.263] [INFO] [TensorRT] ONNX IR version:  0.0.10
+[15:42:36.263] [INFO] [TensorRT] Opset version:    24
+[15:42:36.263] [INFO] [TensorRT] Producer name:    pytorch
+[15:42:36.263] [INFO] [TensorRT] Producer version: 2.13.0+cu130
+[15:42:36.263] [INFO] [TensorRT] Domain:           
+[15:42:36.263] [INFO] [TensorRT] Model version:    0
+[15:42:36.263] [INFO] [TensorRT] Doc string:       
+[15:42:36.263] [INFO] [TensorRT] ----------------------------------------------------------------
+[15:42:36.264] [WARNING] [TensorRT] ModelImporter.cpp:739: Make sure input fast_pos_embed_idx has Int64 binding.
+[15:42:36.273] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.283] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.288] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.289] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.293] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.293] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.299] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.299] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.304] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.304] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.310] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.310] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.316] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.316] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.322] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.322] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.328] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.328] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.333] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.333] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.339] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.339] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.345] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.345] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.353] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.353] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.359] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.359] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.365] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.365] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.370] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.370] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.376] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.376] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.382] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.382] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.389] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.389] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.395] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.395] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.401] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.401] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.407] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.407] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.413] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.414] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:36.420] [INFO] [TensorRT] Searching for plugin: ViTAttentionPlugin, plugin_version: 1, plugin_namespace: 
+[15:42:36.420] [INFO] [TensorRT] Successfully created plugin: ViTAttentionPlugin
+[15:42:37.128] [INFO] [TensorRT] [MemUsageChange] Init builder kernel library: CPU +198, GPU +189, now: CPU 441, GPU 2141 (MiB)
+[15:42:37.437] [INFO] [TensorRT] Local timing cache in use. Profiling results in this builder pass will not be stored.
+[15:42:38.903] [INFO] [TensorRT] Compiler backend is used during engine build.
+[15:43:46.438] [INFO] [TensorRT] [GraphReduction] The approximate region cut reduction algorithm is called.
+[15:43:46.443] [INFO] [TensorRT] Detected 6 inputs and 4 output network tensors.
+[15:43:49.889] [INFO] [TensorRT] Total Host Persistent Memory: 31728 bytes
+[15:43:49.889] [INFO] [TensorRT] Total Device Persistent Memory: 0 bytes
+[15:43:49.889] [INFO] [TensorRT] Max Scratch Memory: 33554432 bytes
+[15:43:49.889] [INFO] [TensorRT] [BlockAssignment] Started assigning block shifts. This will take 153 steps to complete.
+[15:43:49.900] [INFO] [TensorRT] [BlockAssignment] Algorithm ShiftNTopDown took 11.0712ms to assign 14 blocks to 153 nodes requiring 52954112 bytes.
+[15:43:49.901] [INFO] [TensorRT] Total Activation Memory: 52953088 bytes
+[15:43:50.321] [INFO] [TensorRT] Total Weights Memory: 819427584 bytes
+[15:43:50.328] [INFO] [TensorRT] Compiler backend is used during engine execution.
+[15:43:50.329] [INFO] [TensorRT] Engine generation completed in 72.8925 seconds.
+[15:43:50.330] [INFO] [TensorRT] [MemUsageStats] Peak memory usage of TRT CPU/GPU memory allocators: CPU 8 MiB, GPU 789 MiB
+[15:43:50.854] [INFO] [TensorRT] [MemUsageStats] Peak memory usage during Engine building and serialization: CPU: 5039 MiB
+[15:43:51.678] [INFO] [builderUtils.cpp:392:buildAndSerializeEngine] Engine saved to /home/user/vrs_bundle_v2/qwen3vl2b_r16_ep1_int4_v16k/engines/visual/visual.engine
+[15:43:51.736] [INFO] [builderUtils.cpp:444:saveConfigWithBuilderInfo] Saved config with builder info to /home/user/vrs_bundle_v2/qwen3vl2b_r16_ep1_int4_v16k/engines/visual/config.json
+[15:43:51.737] [INFO] [visualBuilder.cpp:711:copyConfig] Copied preprocessor config to /home/user/vrs_bundle_v2/qwen3vl2b_r16_ep1_int4_v16k/engines/visual/preprocessor_config.json
+[15:43:52.432] [INFO] [visual_build.cpp:215:main] Visual engine built successfully.
+	Command being timed: "/home/user/TensorRT-Edge-LLM-1231d64/build/examples/multimodal/visual_build --onnxDir /home/user/vrs_bundle_v2/qwen3vl2b_r16_ep1_int4_v16k/visual --engineDir /home/user/vrs_bundle_v2/qwen3vl2b_r16_ep1_int4_v16k/engines --maxImageTokens 256 --maxImageTokensPerImage 256"
+	User time (seconds): 69.93
+	System time (seconds): 4.35
+	Percent of CPU this job got: 96%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:17.27
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 5160604
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 259
+	Minor (reclaiming a frame) page faults: 665060
+	Voluntary context switches: 7363
+	Involuntary context switches: 2278
+	Swaps: 0
+	File system inputs: 1613736
+	File system outputs: 1642352
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

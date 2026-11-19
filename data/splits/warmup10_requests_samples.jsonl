@@ -1,0 +1,10 @@
+{"qid": "17261", "image_id": "P5789_2028.png", "type": "reasoning", "raw_type": "reasoning", "q": "Are the sizes of the planes visible in the image similar?", "gt": "No"}
+{"qid": "33824", "image_id": "10616_0000.png", "type": "category", "raw_type": "object category", "q": "What type of large object is present in the image?", "gt": "Ship"}
+{"qid": "18817", "image_id": "05909_0000.png", "type": "category", "raw_type": "object category", "q": "What type of structure is visible at the bottom of the image?", "gt": "bridge"}
+{"qid": "1866", "image_id": "P0525_0003.png", "type": "position", "raw_type": "object position", "q": "Where is the larger harbor located in the image?", "gt": "bottom-left"}
+{"qid": "11624", "image_id": "P1860_0006.png", "type": "quantity", "raw_type": "object quantity", "q": "How many large vehicles are present?", "gt": "1"}
+{"qid": "22902", "image_id": "07188_0000.png", "type": "category", "raw_type": "object category", "q": "What is the main structure seen in the bottom of the image?", "gt": "overpass"}
+{"qid": "21705", "image_id": "06824_0000.png", "type": "color", "raw_type": "object color", "q": "Which object in the image has a bright interior?", "gt": "storagetank"}
+{"qid": "18112", "image_id": "P8287_0096.png", "type": "quantity", "raw_type": "object quantity", "q": "How many small vehicles are visible in the image?", "gt": "10"}
+{"qid": "35027", "image_id": "10980_0000.png", "type": "presence", "raw_type": "object existence", "q": "Are there any tennis courts in the image?", "gt": "Yes"}
+{"qid": "37104", "image_id": "11625_0000.png", "type": "scene", "raw_type": "scene type", "q": "Are the vehicles parked in more than one row?", "gt": "yes"}

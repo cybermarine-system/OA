@@ -1,0 +1,13 @@
+{
+ "vocab_size": 151936,
+ "reduced_vocab_size": 16384,
+ "method": "vrsbench_train_answers_questions_lowid",
+ "dataset": "VRSBench train (load_vqa seed 0, val 1% 제외)",
+ "n_train": 84973,
+ "answer_unique_tokens": 2220,
+ "after_question_tokens": 4102,
+ "special": [
+  151643,
+  151645
+ ]
+}

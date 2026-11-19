@@ -1,0 +1,47 @@
+# R39 (release), REVISION: 2.0, GCID: 45755727, BOARD: generic, EABI: aarch64, DATE: Mon Jun  1 09:28:48 PM UTC 2026
+# KERNEL_VARIANT: oot
+TARGET_USERSPACE_LIB_DIR=nvidia
+TARGET_USERSPACE_LIB_DIR_PATH=usr/lib/aarch64-linux-gnu/nvidia
+
+ii  cuda-toolkit-13-2                             13.2.2-1                                         arm64        CUDA Toolkit 13.2 meta-package
+ii  cuda-toolkit-13-2-config-common               13.2.86-1                                        all          Common config package for CUDA Toolkit 13.2.
+ii  cuda-toolkit-13-config-common                 13.2.86-1                                        all          Common config package for CUDA Toolkit 13.
+ii  cuda-toolkit-config-common                    13.2.86-1                                        all          Common config package for CUDA Toolkit.
+ii  libcudnn9-cuda-13                             9.20.0.46-1                                      arm64        cuDNN runtime libraries for CUDA 13.2
+ii  libcudnn9-dev-cuda-13                         9.20.0.46-1                                      arm64        cuDNN development libraries for CUDA 13.2
+ii  libcudnn9-headers-cuda-13                     9.20.0.46-1                                      arm64        cuDNN header files for CUDA 13.2
+ii  libcudnn9-samples                             9.20.0.46-1                                      all          cuDNN samples
+ii  libnvinfer-bin                                10.16.2.10-1+cuda13.2                            arm64        TensorRT binaries
+ii  libnvinfer-dev                                10.16.2.10-1+cuda13.2                            arm64        TensorRT development libraries
+
+Cuda compilation tools, release 13.2, V13.2.86
+Build cuda_13.2.r13.2/compiler.37953736_0
+
+NV Power Mode: MAXN_SUPER
+2
+
+SOC family:tegra234  Machine:NVIDIA Jetson Orin Nano Engineering Reference Developer Kit Super
+Online CPUs: 0-5, Offline CPUs: 
+cpu0:  Governor=schedutil MinFreq=729600 MaxFreq=1728000 CurrentFreq=1497600 IdleStates: WFI=1 c7=1 
+cpu1:  Governor=schedutil MinFreq=729600 MaxFreq=1728000 CurrentFreq=1651200 IdleStates: WFI=1 c7=1 
+cpu2:  Governor=schedutil MinFreq=729600 MaxFreq=1728000 CurrentFreq=1728000 IdleStates: WFI=1 c7=1 
+cpu3:  Governor=schedutil MinFreq=729600 MaxFreq=1728000 CurrentFreq=1728000 IdleStates: WFI=1 c7=1 
+cpu4:  Governor=schedutil MinFreq=729600 MaxFreq=1728000 CurrentFreq=729600 IdleStates: WFI=1 c7=1 
+cpu5:  Governor=schedutil MinFreq=729600 MaxFreq=1728000 CurrentFreq=729600 IdleStates: WFI=1 c7=1 
+GPU MinFreq=306000000 MaxFreq=1020000000 CurrentFreq=1020000000
+Active GPU TPCs: 8
+EMC MinFreq=204000000 MaxFreq=3199000000 CurrentFreq=2133000000
+FAN Dynamic Speed Control=nvfancontrol hwmon0_pwm1=50
+FAN Dynamic Speed Control=nvfancontrol hwmon0_pwm1_enable=1
+NV Power Mode: MAXN_SUPER
+
+NAME     TYPE SIZE USED PRIO
+/swap16G file  16G   0B   -2
+/dev/nvme0n1p1  915G  117G  752G  14% /
+               total        used        free      shared  buff/cache   available
+Mem:            7485        2819        2971          15        1807        4666
+Swap:          16383           0       16383
+Linux orin 6.8.12-1021-tegra #1 SMP PREEMPT Mon Jun  1 13:25:46 PDT 2026 aarch64 aarch64 aarch64 GNU/Linux
+PRETTY_NAME="Ubuntu 24.04.4 LTS"
+NAME="Ubuntu"
+Python 3.12.3

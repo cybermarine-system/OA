@@ -1,0 +1,206 @@
+&&&& RUNNING TensorRT.trtexec [TensorRT v101602] [b10] # /usr/src/tensorrt/bin/trtexec --onnx=/home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/visual/molmo2_visual_fp16.onnx --saveEngine=/home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/visual/visual.engine --fp16 --minShapes=images:1x1x729x588,pooled_patches_idx:1x1x4 --optShapes=images:1x5x729x588,pooled_patches_idx:1x725x4 --maxShapes=images:1x5x729x588,pooled_patches_idx:1x725x4
+[11/16/2026-15:37:43] [W] Weakly-typed networks have been deprecated in TensorRT. You can use the AutoCast tool (https://nvidia.github.io/TensorRT-Model-Optimizer/guides/8_autocast.html) to convert the network to be strongly typed.
+[11/16/2026-15:37:43] [I] === Model Options ===
+[11/16/2026-15:37:43] [I] Format: ONNX
+[11/16/2026-15:37:43] [I] Model: /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/visual/molmo2_visual_fp16.onnx
+[11/16/2026-15:37:43] [I] Output:
+[11/16/2026-15:37:43] [I] === Build Options ===
+[11/16/2026-15:37:43] [I] Memory Pools: workspace: default, dlaSRAM: default, dlaLocalDRAM: default, dlaGlobalDRAM: default, tacticSharedMem: default
+[11/16/2026-15:37:43] [I] avgTiming: 8
+[11/16/2026-15:37:43] [I] Precision: FP32+FP16
+[11/16/2026-15:37:43] [I] LayerPrecisions: 
+[11/16/2026-15:37:43] [I] Layer Device Types: 
+[11/16/2026-15:37:43] [I] Decomposable Attentions: 
+[11/16/2026-15:37:43] [I] Calibration: 
+[11/16/2026-15:37:43] [I] Refit: Disabled
+[11/16/2026-15:37:43] [I] Strip weights: Disabled
+[11/16/2026-15:37:43] [I] Version Compatible: Disabled
+[11/16/2026-15:37:43] [I] ONNX Plugin InstanceNorm: Disabled
+[11/16/2026-15:37:43] [I] ONNX kENABLE_UINT8_AND_ASYMMETRIC_QUANTIZATION_DLA flag: Disabled
+[11/16/2026-15:37:43] [I] ONNX kREPORT_CAPABILITY_DLA flag: Disabled
+[11/16/2026-15:37:43] [I] ONNX kADJUST_FOR_DLA flag: Disabled
+[11/16/2026-15:37:43] [I] ONNX kENABLE_PLUGIN_OVERRIDE flag: Disabled
+[11/16/2026-15:37:43] [I] TensorRT runtime: full
+[11/16/2026-15:37:43] [I] Lean DLL Path: 
+[11/16/2026-15:37:43] [I] Tempfile Controls: { in_memory: allow, temporary: allow }
+[11/16/2026-15:37:43] [I] Exclude Lean Runtime: Disabled
+[11/16/2026-15:37:43] [I] Sparsity: Disabled
+[11/16/2026-15:37:43] [I] Safe mode: Disabled
+[11/16/2026-15:37:43] [I] Build DLA standalone loadable: Disabled
+[11/16/2026-15:37:43] [I] Allow GPU fallback for DLA: Disabled
+[11/16/2026-15:37:43] [I] DirectIO mode: Disabled
+[11/16/2026-15:37:43] [I] Restricted mode: Disabled
+[11/16/2026-15:37:43] [I] Skip inference: Disabled
+[11/16/2026-15:37:43] [I] Save engine: /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/visual/visual.engine
+[11/16/2026-15:37:43] [I] Load engine: 
+[11/16/2026-15:37:43] [I] Profiling verbosity: 0
+[11/16/2026-15:37:43] [I] Tactic sources: Using default tactic sources
+[11/16/2026-15:37:43] [I] timingCacheMode: local
+[11/16/2026-15:37:43] [I] timingCacheFile: 
+[11/16/2026-15:37:43] [I] Enable Compilation Cache: Enabled
+[11/16/2026-15:37:43] [I] Enable Monitor Memory: Disabled
+[11/16/2026-15:37:43] [I] CPU Only Mode: Disabled
+[11/16/2026-15:37:43] [I] errorOnTimingCacheMiss: Disabled
+[11/16/2026-15:37:43] [I] Preview Features: Use default preview flags.
+[11/16/2026-15:37:43] [I] MaxAuxStreams: -1
+[11/16/2026-15:37:43] [I] BuilderOptimizationLevel: -1
+[11/16/2026-15:37:43] [I] MaxTactics: -1
+[11/16/2026-15:37:43] [I] Calibration Profile Index: 0
+[11/16/2026-15:37:43] [I] Weight Streaming: Disabled
+[11/16/2026-15:37:43] [I] Runtime Platform: Same As Build
+[11/16/2026-15:37:43] [I] Debug Tensors: 
+[11/16/2026-15:37:43] [I] Distributive Independence: Disabled
+[11/16/2026-15:37:43] [I] Mark Unfused Tensors As Debug Tensors: Disabled
+[11/16/2026-15:37:43] [I] Input(s)s format: fp32:CHW
+[11/16/2026-15:37:43] [I] Output(s)s format: fp32:CHW
+[11/16/2026-15:37:43] [I] Input build shape (profile 0): images=1x1x729x588+1x5x729x588+1x5x729x588
+[11/16/2026-15:37:43] [I] Input build shape (profile 0): pooled_patches_idx=1x1x4+1x725x4+1x725x4
+[11/16/2026-15:37:43] [I] Input calibration shapes: model
+[11/16/2026-15:37:43] [I] === System Options ===
+[11/16/2026-15:37:43] [I] Device: 0
+[11/16/2026-15:37:43] [I] DLACore: 
+[11/16/2026-15:37:43] [I] Loaded static plugins:
+[11/16/2026-15:37:43] [I] setPluginsToSerialize:
+[11/16/2026-15:37:43] [I] dynamicPlugins:
+[11/16/2026-15:37:43] [I] ignoreParsedPluginLibs: 0
+[11/16/2026-15:37:43] [I] 
+[11/16/2026-15:37:43] [I] === Inference Options ===
+[11/16/2026-15:37:43] [I] Batch: Explicit
+[11/16/2026-15:37:43] [I] Input inference shape : pooled_patches_idx=1x725x4
+[11/16/2026-15:37:43] [I] Input inference shape : images=1x5x729x588
+[11/16/2026-15:37:43] [I] Iterations: 10
+[11/16/2026-15:37:43] [I] Duration: 3s (+ 200ms warm up)
+[11/16/2026-15:37:43] [I] Sleep time: 0ms
+[11/16/2026-15:37:43] [I] Idle time: 0ms
+[11/16/2026-15:37:43] [I] Inference Streams: 1
+[11/16/2026-15:37:43] [I] ExposeDMA: Disabled
+[11/16/2026-15:37:43] [I] Data transfers: Enabled
+[11/16/2026-15:37:43] [I] Spin-wait: Disabled
+[11/16/2026-15:37:43] [I] Multithreading: Disabled
+[11/16/2026-15:37:43] [I] CUDA Graph: Disabled
+[11/16/2026-15:37:43] [I] Separate profiling: Disabled
+[11/16/2026-15:37:43] [I] Time Deserialize: Disabled
+[11/16/2026-15:37:43] [I] Time Refit: Disabled
+[11/16/2026-15:37:43] [I] NVTX verbosity: 0
+[11/16/2026-15:37:43] [I] Persistent Cache Ratio: 0
+[11/16/2026-15:37:43] [I] Optimization Profile Index: 0
+[11/16/2026-15:37:43] [I] Weight Streaming Budget: 100.000000%
+[11/16/2026-15:37:43] [I] Inputs:
+[11/16/2026-15:37:43] [I] Debug Tensor Save Destinations:
+[11/16/2026-15:37:43] [I] Dump All Debug Tensor in Formats: 
+[11/16/2026-15:37:43] [I] === Reporting Options ===
+[11/16/2026-15:37:43] [I] Verbose: Disabled
+[11/16/2026-15:37:43] [I] Averages: 10 inferences
+[11/16/2026-15:37:43] [I] Percentiles: 90,95,99
+[11/16/2026-15:37:43] [I] Dump refittable layers:Disabled
+[11/16/2026-15:37:43] [I] Dump output: Disabled
+[11/16/2026-15:37:43] [I] Profile: Disabled
+[11/16/2026-15:37:43] [I] Export timing to JSON file: 
+[11/16/2026-15:37:43] [I] Export output to JSON file: 
+[11/16/2026-15:37:43] [I] Export profile to JSON file: 
+[11/16/2026-15:37:43] [I] 
+[11/16/2026-15:37:43] [I] === Device Information ===
+[11/16/2026-15:37:43] [I] Available Devices: 
+[11/16/2026-15:37:43] [I]   Device 0: "Orin" UUID: GPU-60aec8e9-9ce4-5fae-81dc-583cc87a2b54
+[11/16/2026-15:37:43] [I] Selected Device: Orin
+[11/16/2026-15:37:43] [I] Selected Device ID: 0
+[11/16/2026-15:37:43] [I] Selected Device UUID: GPU-60aec8e9-9ce4-5fae-81dc-583cc87a2b54
+[11/16/2026-15:37:43] [I] Compute Capability: 8.7
+[11/16/2026-15:37:43] [I] SMs: 8
+[11/16/2026-15:37:43] [I] Device Global Memory: 7485 MiB
+[11/16/2026-15:37:43] [I] Shared Memory per SM: 164 KiB
+[11/16/2026-15:37:43] [I] Memory Bus Width: 128 bits (ECC disabled)
+[11/16/2026-15:37:43] [I] Application Compute Clock Rate: 1.02 GHz
+[11/16/2026-15:37:43] [I] Application Memory Clock Rate: 0.918 GHz
+[11/16/2026-15:37:43] [I] 
+[11/16/2026-15:37:43] [I] Note: The application clock rates do not reflect the actual clock rates that the GPU is currently running at.
+[11/16/2026-15:37:43] [I] 
+[11/16/2026-15:37:43] [I] TensorRT version: 10.16.2
+[11/16/2026-15:37:43] [I] Loading standard plugins
+[11/16/2026-15:37:44] [I] [TRT] [MemUsageChange] Init CUDA: CPU +1, GPU +0, now: CPU 24, GPU 1029 (MiB)
+[11/16/2026-15:37:44] [I] Start parsing network model.
+[11/16/2026-15:37:45] [I] [TRT] ----------------------------------------------------------------
+[11/16/2026-15:37:45] [I] [TRT] Input filename:   /home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/visual/molmo2_visual_fp16.onnx
+[11/16/2026-15:37:45] [I] [TRT] ONNX IR version:  0.0.8
+[11/16/2026-15:37:45] [I] [TRT] Opset version:    17
+[11/16/2026-15:37:45] [I] [TRT] Producer name:    pytorch
+[11/16/2026-15:37:45] [I] [TRT] Producer version: 2.11.0
+[11/16/2026-15:37:45] [I] [TRT] Domain:           
+[11/16/2026-15:37:45] [I] [TRT] Model version:    0
+[11/16/2026-15:37:45] [I] [TRT] Doc string:       
+[11/16/2026-15:37:45] [I] [TRT] ----------------------------------------------------------------
+[11/16/2026-15:37:45] [W] [TRT] ModelImporter.cpp:739: Make sure input pooled_patches_idx has Int64 binding.
+[11/16/2026-15:37:46] [I] Finished parsing network model. Parse time: 1.37997
+[11/16/2026-15:37:46] [I] Set shape of input tensor images for optimization profile 0 to: MIN=1x1x729x588 OPT=1x5x729x588 MAX=1x5x729x588
+[11/16/2026-15:37:46] [I] Set shape of input tensor pooled_patches_idx for optimization profile 0 to: MIN=1x1x4 OPT=1x725x4 MAX=1x725x4
+[11/16/2026-15:37:46] [I] [TRT] [MemUsageChange] Init builder kernel library: CPU +198, GPU +188, now: CPU 1343, GPU 2380 (MiB)
+[11/16/2026-15:37:47] [I] [TRT] Local timing cache in use. Profiling results in this builder pass will not be stored.
+[11/16/2026-15:37:49] [I] [TRT] Compiler backend is used during engine build.
+[11/16/2026-15:39:59] [I] [TRT] Detected 2 inputs and 1 output network tensors.
+[11/16/2026-15:40:00] [I] [TRT] Total Host Persistent Memory: 80 bytes
+[11/16/2026-15:40:00] [I] [TRT] Total Device Persistent Memory: 0 bytes
+[11/16/2026-15:40:00] [I] [TRT] Max Scratch Memory: 73367040 bytes
+[11/16/2026-15:40:00] [I] [TRT] [BlockAssignment] Started assigning block shifts. This will take 2 steps to complete.
+[11/16/2026-15:40:00] [I] [TRT] [BlockAssignment] Algorithm ShiftNTopDown took 0.024352ms to assign 2 blocks to 2 nodes requiring 80225792 bytes.
+[11/16/2026-15:40:00] [I] [TRT] Total Activation Memory: 80225792 bytes
+[11/16/2026-15:40:00] [I] [TRT] Total Weights Memory: 878268928 bytes
+[11/16/2026-15:40:00] [I] [TRT] Compiler backend is used during engine execution.
+[11/16/2026-15:40:00] [I] [TRT] Engine generation completed in 133.711 seconds.
+[11/16/2026-15:40:00] [I] [TRT] [MemUsageStats] Peak memory usage of TRT CPU/GPU memory allocators: CPU 1675 MiB, GPU 2142 MiB
+[11/16/2026-15:40:02] [I] Created engine with size: 841.024 MiB
+[11/16/2026-15:40:02] [I] Engine built in 136.211 sec.
+[11/16/2026-15:40:04] [I] [TRT] Loaded engine size: 841 MiB
+[11/16/2026-15:40:04] [I] Engine deserialized in 0.485647 sec.
+[11/16/2026-15:40:04] [I] [TRT] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +77, now: CPU 0, GPU 914 (MiB)
+[11/16/2026-15:40:04] [I] Setting persistentCacheLimit to 0 bytes.
+[11/16/2026-15:40:04] [I] Set shape of input tensor images to: 1x5x729x588
+[11/16/2026-15:40:04] [I] Set shape of input tensor pooled_patches_idx to: 1x725x4
+[11/16/2026-15:40:04] [I] Created execution context with device memory size: 76.5093 MiB
+[11/16/2026-15:40:04] [I] Using random values for input images
+[11/16/2026-15:40:04] [I] Input binding for images with dimensions 1x5x729x588 and type fp16 is created.
+[11/16/2026-15:40:04] [I] Using random values for input pooled_patches_idx
+[11/16/2026-15:40:04] [I] Input binding for pooled_patches_idx with dimensions 1x725x4 and type int64 is created.
+[11/16/2026-15:40:04] [I] Output binding for patch_embeds with dimensions 725x2560 and type fp16 is created.
+[11/16/2026-15:40:04] [I] Starting inference
+[11/16/2026-15:40:09] [I] Warmup completed 1 queries over 200 ms
+[11/16/2026-15:40:09] [I] Timing trace has 10 queries over 4.36926 s
+[11/16/2026-15:40:09] [I] 
+[11/16/2026-15:40:09] [I] === Trace details ===
+[11/16/2026-15:40:09] [I] Trace averages of 10 runs:
+[11/16/2026-15:40:09] [I] Average on 10 runs - GPU latency: 398.048 ms - Host latency: 398.676 ms (enqueue 1.7711 ms)
+[11/16/2026-15:40:09] [I] 
+[11/16/2026-15:40:09] [I] === Performance summary ===
+[11/16/2026-15:40:09] [I] Throughput: 2.28872 qps
+[11/16/2026-15:40:09] [I] Latency: min = 397.956 ms, max = 401.599 ms, mean = 398.676 ms, median = 398.341 ms, percentile(90%) = 399.154 ms, percentile(95%) = 401.599 ms, percentile(99%) = 401.599 ms
+[11/16/2026-15:40:09] [I] Enqueue Time: min = 1.56104 ms, max = 2.25928 ms, mean = 1.7711 ms, median = 1.75867 ms, percentile(90%) = 1.88265 ms, percentile(95%) = 2.25928 ms, percentile(99%) = 2.25928 ms
+[11/16/2026-15:40:09] [I] H2D Latency: min = 0.383057 ms, max = 0.531103 ms, mean = 0.427976 ms, median = 0.414917 ms, percentile(90%) = 0.467773 ms, percentile(95%) = 0.531103 ms, percentile(99%) = 0.531103 ms
+[11/16/2026-15:40:09] [I] GPU Compute Time: min = 397.335 ms, max = 400.963 ms, mean = 398.048 ms, median = 397.709 ms, percentile(90%) = 398.408 ms, percentile(95%) = 400.963 ms, percentile(99%) = 400.963 ms
+[11/16/2026-15:40:09] [I] D2H Latency: min = 0.148438 ms, max = 0.225586 ms, mean = 0.200488 ms, median = 0.210571 ms, percentile(90%) = 0.216675 ms, percentile(95%) = 0.225586 ms, percentile(99%) = 0.225586 ms
+[11/16/2026-15:40:09] [I] Total Host Walltime: 4.36926 s
+[11/16/2026-15:40:09] [I] Total GPU Compute Time: 3.98048 s
+[11/16/2026-15:40:09] [I] Explanations of the performance metrics are printed in the verbose logs.
+[11/16/2026-15:40:09] [I] 
+&&&& PASSED TensorRT.trtexec [TensorRT v101602] [b10] # /usr/src/tensorrt/bin/trtexec --onnx=/home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/visual/molmo2_visual_fp16.onnx --saveEngine=/home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/visual/visual.engine --fp16 --minShapes=images:1x1x729x588,pooled_patches_idx:1x1x4 --optShapes=images:1x5x729x588,pooled_patches_idx:1x725x4 --maxShapes=images:1x5x729x588,pooled_patches_idx:1x725x4
+	Command being timed: "/usr/src/tensorrt/bin/trtexec --onnx=/home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/visual/molmo2_visual_fp16.onnx --saveEngine=/home/user/vrs_bundle_v2/molmo2_causal_r16_ep1_int4_v16k/engines/visual/visual.engine --fp16 --minShapes=images:1x1x729x588,pooled_patches_idx:1x1x4 --optShapes=images:1x5x729x588,pooled_patches_idx:1x725x4 --maxShapes=images:1x5x729x588,pooled_patches_idx:1x725x4"
+	User time (seconds): 73.98
+	System time (seconds): 13.28
+	Percent of CPU this job got: 59%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:27.49
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 6915516
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 5726
+	Minor (reclaiming a frame) page faults: 1199318
+	Voluntary context switches: 20150
+	Involuntary context switches: 3876
+	Swaps: 0
+	File system inputs: 3409888
+	File system outputs: 3463720
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
